@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from 'axios'
-
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = `https://swapi.dev/api/people/`;
+  const url = 'https://swapi.dev/api/people/';
   
   await axios
     .get(url)
