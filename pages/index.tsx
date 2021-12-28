@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Box, Heading, VStack, Flex } from '@chakra-ui/react'
-import HomeCards from '../components/homeHeroes'
+import HomeCards from '../components/home'
 
 const Home: NextPage = () => {
   return (

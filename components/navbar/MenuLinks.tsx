@@ -15,7 +15,7 @@ const MenuLinks = ({ show }:any) => {
     >
       <MenuItem to="/">Home</MenuItem>
       <MenuItem to="/films">Movies</MenuItem>
-      <MenuItem to="/people">People</MenuItem>  
+      <MenuItem to="/charcters">People</MenuItem>  
       <MenuItem to="/planets">Planets</MenuItem>
       <MenuItem to="/species">Species</MenuItem>
       <MenuItem to="/starships">Starships</MenuItem>
