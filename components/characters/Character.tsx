@@ -1,24 +1,37 @@
 import {
-  Box,
+  Stack,
+  Flex,
   Heading,
   Text,
-  Stack,
   Button,
+  Image,
   useColorModeValue,
-  Flex,
-  Image
 } from '@chakra-ui/react';
 
-// Height:{item.height}
-// Mass:{item.mass}
-// Hair Color:{item.hair_color}
-// Skin Color:{item.skin_color}
-// Eye Color:{item.eye_color}
-// Birth Year: {item.birth_year}
-// Gender: {item.gender}
-// Species: {''}
+export type CharacterType =  {
+  name: string;
+  height: string;
+  mass: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+  homeworld: string;
+  films: string[];
+  species: string | [];
+  vehicles: string[];
+  starships: string[]
+  created: string;
+  edited: string;
+  url: string;
+}
 
-function Character({item}: any) {
+export interface PersonProps {
+  readonly person: CharacterType
+} 
+
+const Character = ({ person }: PersonProps) => {
   return (
     <Stack
         borderWidth="1px"
@@ -47,20 +60,21 @@ function Character({item}: any) {
           p={1}
           pt={2}>
           <Heading mb={3} fontSize={'2xl'} fontFamily={'body'}>
-            {item.name}
+            {person.name}
           </Heading>
           <Text
             textAlign={'center'}
             color={useColorModeValue('gray.700', 'gray.400')}
             px={3}
           >
-          <Text>Height:{item.height}</Text>
-          <Text>Mass:{item.mass}</Text>
-          <Text>Hair Color:{item.hair_color}</Text>
-          <Text>Skin Color:{item.skin_color}</Text>
-          <Text>Eye Color:{item.eye_color}</Text>
-          <Text>Birth Year: {item.birth_year}</Text>
-          <Text>Gender: {item.gender}</Text>
+            {/* dry */}
+          <Text>Height:{person.height}</Text>
+          <Text>Mass:{person.mass}</Text>
+          <Text>Hair Color:{person.hair_color}</Text>
+          <Text>Skin Color:{person.skin_color}</Text>
+          <Text>Eye Color:{person.eye_color}</Text>
+          <Text>Birth Year: {person.birth_year}</Text>
+          <Text>Gender: {person.gender}</Text>
           <Text>Species: {''}</Text>
           </Text>
 

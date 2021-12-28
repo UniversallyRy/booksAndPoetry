@@ -1,60 +1,64 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType} from 'next'
 import Head from 'next/head'
-import { Box, Text, Heading, Button, HStack, VStack, Stack } from '@chakra-ui/react'
-import { CloseIcon} from '@chakra-ui/icons'
-import CharacterList from '../../components/characters/CharacterList'
+import { Box, Text, Heading, Stack } from '@chakra-ui/react'
+import CharacterList, { CharactersProps } from '../../components/characters/CharacterList'
+import { CharacterType } from '../../components/characters/Character';
 import ReactPaginate from 'react-paginate';
 import Router, { withRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import useSWR from "swr"
+import useSWR, { SWRConfig } from "swr"
 
-type Character = {
-  title: string
+export type DataProps = {
+  data: {
+    count: number,
+    next: string | null;
+    previous: string | null;
+    results: CharacterType[];
+  }
 }
 
-type PeopleProps = {
-    next: string;
-    results: {
-        [key: string]: Character
-    };
-}
-
-const fetcher = (url:string) => axios.get(url).then(res => res.data)
 //  count: 82,
 //   next: 'https://swapi.dev/api/people/?page=2',
 //   previous: null,
 
-const People: NextPage = ({ fallback }:any) => {
-  const { data }  = (useSWR(`/api/characters`, fetcher) || fallback)
+const People = ({ data }: DataProps) => {
+  const [isLoading, setLoading] = useState(false); //State for the loading indicator
+  const startLoading = () => setLoading(true);
+  const stopLoading = () => setLoading(false);
   console.log(data)
-    const [isLoading, setLoading] = useState(false); //State for the loading indicator
-    const startLoading = () => setLoading(true);
-    const stopLoading = () => setLoading(false);
-    // const numOfPages = Math.ceil(data.count / 10)
+  const numOfPages = Math.ceil(data.count / 10)
 
-  //   useEffect(() => { //After the component is mounted set router event handlers
-  //     Router.events.on('routeChangeStart', startLoading); 
-  //     Router.events.on('routeChangeComplete', stopLoading);
+  useEffect(() => { //After the component is mounted set router event handlers
+    Router.events.on('routeChangeStart', startLoading); 
+    Router.events.on('routeChangeComplete', stopLoading);
+    return () => {
+        Router.events.off('routeChangeStart', startLoading);
+        Router.events.off('routeChangeComplete', stopLoading);
+    }
+  }, [])
 
-  //     return () => {
-  //         Router.events.off('routeChangeStart', startLoading);
-  //         Router.events.off('routeChangeComplete', stopLoading);
-  //     }
-  // }, [])
+  // useEffect(() => {
+  //   if(!data){
+  //   setLoading(true);
+  //   }
+  // }, [data]);
 
     const pagginationHandler = (page:any) => {
-      // const currentPath = Router.pathname;
-      // const currentQuery = Router.query;
-      // currentQuery.page = page.selected + 1;
+      const currentPath = Router.pathname;
+      const currentQuery = Router.query;
+      currentQuery.page = page.selected + 1 ;
 
-      // Router.push({
-      //     pathname: currentPath,
-      //     query: currentQuery,
-      // });
+      Router.push({
+          pathname: currentPath,
+          query: currentQuery,
+      });
 
     };
 
+    // if (isLoading) {
+    //   return <p>Data is loading...</p>;
+    // }
   return (
     <Box align="center">
       <Head>
@@ -66,39 +70,41 @@ const People: NextPage = ({ fallback }:any) => {
         <Heading>
           Star Wars Characters
         </Heading>
-
         <Text>
           All People
         </Text>
 
-        <CharacterList list={data.results}/>
+        <CharacterList characters={data.results}/>
+
         <Stack direction="column">
           <ReactPaginate
-                    previousLabel={'Previous'}
-                    nextLabel={'Next'}
-                    breakLabel={'...'}
-                    activeClassName={'active'}
-                    initialPage={1}
-                    pageCount={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={pagginationHandler}
-                />
+            previousLabel={'Previous'}
+            nextLabel={'Next'}
+            breakLabel={'...'}
+            activeClassName={'active'}
+            initialPage={1}
+            pageCount={numOfPages}
+            pageRangeDisplayed={5}
+            onPageChange={pagginationHandler}
+          />
         </Stack>
     </Box>
   )
 }
 
-export async function getStaticProps () {
-  // `getStaticProps` is executed on the server side.
-  const res = await fetch('https://swapi.dev/api/people/');
-  const data = await res.json();
-  return {
-    props: {
-      fallback: {
-        '/api/characters': data
-      }
-    }
+export const getStaticProps = async ()  => {
+  try {
+    const res = await axios.get("https://swapi.dev/api/people/");
+
+    return {
+      props: {
+        data: res.data,
+      },
+    };
+  } catch (error) {
+    console.log(error);
   }
-}
+};
+
 
 export default People
