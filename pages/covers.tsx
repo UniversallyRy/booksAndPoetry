@@ -17,7 +17,6 @@ export type DataProps = {
 }
 
 const Books: NextPage = ({ books }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(books.works[0])
   return (
     <Box align="center">
       <Head>
@@ -42,12 +41,9 @@ const Books: NextPage = ({ books }: InferGetStaticPropsType<typeof getStaticProp
 
 export const getStaticProps: GetStaticProps = async (context) => {
     // Call an external API endpoint to get posts.
-    // You can use any data fetching library
     const res = await axios.get('https://openlibrary.org/subjects/love.json?limit=10?offset')
     const books: DataProps = await res.data
-  
-    // By returning { props: { posts } }, the Blog component
-    // will receive `posts` as a prop at build time
+
     return {
       props: {
         books: books,

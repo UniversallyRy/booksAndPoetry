@@ -1,8 +1,11 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType} from 'next'
+import { NextApiRequest, NextApiResponse } from "next";
 import Head from 'next/head'
 import { Box, Divider, Flex, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import useSWR from 'swr'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 
 
@@ -36,12 +39,40 @@ export type DataProps = {
     last_modified: { type: string, value: string };
   }
 }
+export function useQuery() {
+  const router = useRouter();
+  const ready = router.asPath !== router.route;
+  if (!ready) return null;
+  return router.query;
+}
 
-const fetcher = (url:string) => axios.get(url).then(res => res.data)
 
-const Books: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { data, error } = useSWR('/api/book', fetcher)
-  console.log(data)
+const Books: NextPage = ({ book }: InferGetStaticPropsType<GetStaticProps>) => {
+  const [newData, setData] = useState({});
+  const fetcher = (url:string) => axios.get(url).then(res => res.data)
+  const { data, error } = useSWR('http://localhost:3000/api/book/index', fetcher)
+  const router = useRouter()
+  const query = useQuery();
+  useEffect(() => {
+    if (!query) {
+      return;
+    }
+    console.log('my query exists!!', query);
+  }, [query]);
+
+  // const fetchData = () => {
+  //   axios.get("https://openlibrary.org/isbn/9780140328721")
+  //   .then((res) => {
+  //     setData(res.data)
+  //     console.log(res.data)
+  //   })
+  //   .catch(err => console.log(err));
+  // }
+  
+  // useEffect(() => fetchData(), [data])
+  if (!data) return <div>loading...</div>
+  if (error) return <div>failed to load</div>
+
   return (
     <Box align="center">
       <Head>
@@ -54,29 +85,26 @@ const Books: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps
         <Divider/>
         <Text>Publisher: {book.publishers}</Text>
         <Divider/>
-        <Text>Publish Date: {book.publish_date}</Text>
+        <Text>Publish Date: {data.publish_date}</Text>
         <Divider/>
-        <Text>Pages: {book.number_of_pages}</Text>
+        <Text>Pages: {data.number_of_pages}</Text>
         <Divider/>
-        <Text>1st Sentence: {book.first_sentence.value}</Text>
+        {/* <Text>1st Sentence: {data.first_sentence.value}</Text> */}
         <Divider/>
       </Flex>
-
+      <button type="button" onClick={() => router.back()}>
+        Click here to go back
+      </button>
     </Box>
   )
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    // Call an external API endpoint to get posts.
-    // You can use any data fetching library
-    const res = await axios.get('https://openlibrary.org/isbn/9780140328721')
-    const book: DataProps = await res.data
+    const res = await axios.get('http://localhost:3000/api/book/index')
   
-    // By returning { props: { posts } }, the Blog component
-    // will receive `posts` as a prop at build time
     return {
       props: {
-        book: book,
+        book: res.data
       },
     }
   }

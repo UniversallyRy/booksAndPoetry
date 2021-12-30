@@ -9,7 +9,7 @@ export type CoversProps = {
 const CoverList = ({books}: CoversProps) => {
   return (
     <Box>
-      {books.map((book:any) => (
+      {books && books.map((book:any) => (
           <BookCard key={book.key} item={book}/>
       ))}
     </Box>
