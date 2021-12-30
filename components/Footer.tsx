@@ -2,7 +2,7 @@ import { Box, HStack, Image } from '@chakra-ui/react'
 
 const Footer = () => {
   return (
-    <HStack align="center">
+    <HStack mt={5} align="center">
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"

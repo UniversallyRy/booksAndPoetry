@@ -23,7 +23,6 @@ const BookRating = ( props: { rating: any; count: any; } ) => {
         display="block"
         width= '100%'
         padding= '40px 20px'
-        color= 'white'
         borderRadius='5px'
         backgroundColor= 'rgba($color: $black, $alpha: 0.65)'
     >
@@ -31,7 +30,7 @@ const BookRating = ( props: { rating: any; count: any; } ) => {
         fontSize='18px'
         m= '10px 0 0 0'
         display= 'block'
-        color='white'
+        color='orange.300'
       >
         { rating > 0 && rating !== undefined ? rating : 0 }
         <Text fontSize="sm"> – { count > 0 && count !== undefined ? count : 0 } ratings</Text>

@@ -6,7 +6,7 @@ const BookMeta = ( props: { name: boolean | ReactChild | ReactFragment | ReactPo
     <VStack>
       <Box>
         <Heading
-          color= "gray"
+          color= "red.900"
           fontSize= "sm"
           fontWeight= {600}
         >

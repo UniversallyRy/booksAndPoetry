@@ -63,24 +63,23 @@ const SearchBar = ( props:any ) => {
               zIndex= {99}
             >
               {
-                data.map((book:any) => (
-                  <ListItem 
-                    key={book.id}
-                    onClick={() => clickHandler(book.id)}
-                    cursor= "pointer"
-                    fontSize= "14px"
-                    width= "100%"
-                    list-style= "none"
-                    display= "block"
-                    padding= "8px 15px"
-                    borderBottom= "1px solid gray"
-                    transition= '(all .25s)'
-                    _hover={{backgroundColor: "gray"}}
-                  >
-                    {book.volumeInfo.title}
-                  </ListItem>
-                ))
-              }
+              data.map((book:any) => (
+                <ListItem 
+                  key={book.id}
+                  onClick={() => clickHandler(book.id)}
+                  cursor= "pointer"
+                  fontSize= "14px"
+                  width= "100%"
+                  list-style= "none"
+                  display= "block"
+                  padding= "8px 15px"
+                  borderBottom= "1px solid gray"
+                  transition= '(all .25s)'
+                  _hover={{backgroundColor: "gray"}}
+                >
+                  {book.volumeInfo.title}
+                </ListItem>
+              ))}
             </List>
         }
       </Flex>

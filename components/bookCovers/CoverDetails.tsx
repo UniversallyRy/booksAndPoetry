@@ -35,29 +35,37 @@ const CoverDetails = ( props: any  ) => {
       backgroundColor={useColorModeValue('telegram.900', 'blue.900')}  
       boxShadow={'2xl'}
       rounded={'md'}
-      p={6}
+      p={3}
     >
       {
       !isEmpty(props.data) ?
         <HStack w={550}>
           <VStack>
-            <Image  w={300} mb={0} alt="book image" src={imageLink !== undefined ? imageLink : './static/empty-cover.jpeg'} thumbnail />
+            <Image 
+              objectFit='cover' 
+              boxShadow="2xl" 
+              borderRadius={4}
+              w={300} 
+              alt="book image" 
+              src={imageLink !== undefined ? imageLink : './static/empty-cover.jpeg'} 
+              thumbnail 
+            />
             <CoverRating rating={averageRating} count={ratingsCount} />
           </VStack>
           <VStack bg='gray.900' p={2} rounded="sm" boxShadow="sm">
-            <Heading fontSize={21} fontWeight={ 500}>
+            <Heading color="orange.300" fontSize={20} fontWeight={ 500}>
               {title}
               { publishedDate !== undefined && <span> – {publishedDate} </span> }
             </Heading>
-          <VStack>
+          <VStack color="orange.300">
             { authors !== undefined && authors.length > 0 && <CoverMeta name="Author" value={authors.join(', ')} /> }
             { pageCount !== undefined && <CoverMeta name="Page number" value={pageCount} /> }
             { categories !== undefined && <CoverMeta name="Category" value={categories} /> }
             { language !== undefined && <CoverMeta name="Language" value={languages.filter((item: { code: any; }) => { return item.code === language })[0].name} /> }
           </VStack>
-            { description !== undefined && <Text fontSize='14px' fontWeight={300}>{truncate(description, 500).replace(/<[^>]+>/g, '')}</Text> }
+            { description !== undefined && <Text color="orange.300" fontSize='14px' fontWeight={300}>{truncate(description, 500).replace(/<[^>]+>/g, '')}</Text> }
             { webReaderLink !== undefined &&
-                <Button mr={3}>
+                <Button mr={3} color="orange.300">
                   <a 
                     target="_blink"
                     href={webReaderLink}
