@@ -14,6 +14,6 @@ module.exports = {
   reactStrictMode: true,
   // rewrites: async () => rewritesConfig,
   images: {
-    domains: ["unsplash.com", "covers.openlibrary.org"],
+    domains: ["unsplash.com", "books.google.com"],
   },
 };

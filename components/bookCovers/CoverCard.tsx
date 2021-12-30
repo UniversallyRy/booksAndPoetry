@@ -34,33 +34,46 @@ export type AvailabilityType = {
 }
 
 export type CoverType =  {
-  key: string;
-  title: string;
-  edition_count: number;
-  cover_id: number;
-  cover_edition_key: string;
-  subject: string[];
-  ia_collection: string[];
-  lendinglibrary: boolean;
-  printdisabled: boolean;
-  lending_edition: string;
-  lending_identifier: string;
-  authors: {
-    key: string
-    name: string;
-  }[],
-  first_publish_year: null;
-  ia: string;
-  public_scan: boolean;
-  has_fulltext: boolean;
-  availability: AvailabilityType;
+  kind: string; 
+  id: string;
+  etag: string; 
+  selfLink: string; 
+  saleInfo: {};
+  accessInfo: {};
+  searchInfo: {}
+  volumeInfo: { 
+    title: string;
+    authors: string[];
+    publisher: string;
+    publishedDate: string;
+    description: string;
+    industryIdentifiers: string[];
+    readingModes: Object[],
+    pageCount: number;
+    printType: string;
+    categories: string[],
+    averageRating: number;
+    ratingsCount: number;
+    maturityRating: string;
+    allowAnonLogging: boolean
+    contentVersion: string;
+    panelizationSummary: Object[];
+    imageLinks: {
+      thumbnail:string;
+      smallThumbnail:string;
+    };
+    language: string;
+    previewLink: string;
+    infoLink: string;
+    canonicalVolumeLink: string;
+  }
 };
 
 export interface CardProps {
   readonly item: CoverType
 } 
-
 function CoverCard({item }: CardProps) {
+  const { kind, id, etag, selfLink, volumeInfo, saleInfo, accessInfo, searchInfo} = item;
   return (
     <Center py={6}>
     <Box
@@ -72,7 +85,7 @@ function CoverCard({item }: CardProps) {
       p={6}
       overflow={'hidden'}>
       <Box
-        h={'300px'}
+        h={'200px'}
         bg={'gray.100'}
         mt={-6}
         mx={-6}
@@ -80,7 +93,7 @@ function CoverCard({item }: CardProps) {
         pos={'relative'}>
         <Image
           src={
-            `https://covers.openlibrary.org/b/id/${item.cover_id}-M.jpg`
+            `${volumeInfo.imageLinks.thumbnail}`
           }
           layout={'fill'}
           alt="img"
@@ -91,19 +104,19 @@ function CoverCard({item }: CardProps) {
           color={useColorModeValue('gray.700', 'white')}
           fontSize={'2xl'}
           fontFamily={'body'}>
-          {item.title}
+          {volumeInfo.title}
         </Heading>
         <Text color={'gray.500'}>
           {}
         </Text>
       </Stack>
       <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-        <Avatar
+        {/* <Avatar
           src={`https://covers.openlibrary.org/b/id/${item.cover_id}-S.jpg`}
           alt={'Card'}
-        />
+        /> */}
         <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-          <Text fontWeight={600}>Author: {item.authors[0].name}</Text>
+          <Text fontWeight={600}>Author: {volumeInfo.authors[0]}</Text>
           {/* <Text fontWeight={600}>Producers: {item.producer}</Text> */}
           {/* <Text color={'gray.500'}>{item.release_date}</Text> */}
           
@@ -116,9 +129,8 @@ function CoverCard({item }: CardProps) {
           mt={1}
           fontSize={'sm'}
           letterSpacing={1.1}>
-          Edition: {item.edition_count}
         </Text>
-        <NextLink href='/book' passHref>
+        <NextLink href={`/book/${id}`} passHref>
           <Button />
         </NextLink>
     </Box>
