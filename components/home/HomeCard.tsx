@@ -53,7 +53,7 @@ function HomeCard({cardInfo, ...props}:any) {
               bg={'red.400'}
               _hover={{ bg: 'red.500' }}
             >
-              <NextLink href='/films' passHref>
+              <NextLink href={cardInfo.route} passHref>
                 <LinkOverlay>View {cardInfo.name}</LinkOverlay>
               </NextLink>
             </Button>
@@ -87,7 +87,6 @@ function HomeCard({cardInfo, ...props}:any) {
               align={'center'}
               w={'100%'}
               h={'100%'}
-              src={cardInfo.image}
             />
           </Box>
         </Flex>

@@ -14,12 +14,8 @@ const MenuLinks = ({ show }:any) => {
       pt={[4, 4, 0, 0]}
     >
       <MenuItem to="/">Home</MenuItem>
-      <MenuItem to="/films">Movies</MenuItem>
-      <MenuItem to="/characters">People</MenuItem>  
-      <MenuItem to="/planets">Planets</MenuItem>
-      <MenuItem to="/species">Species</MenuItem>
-      <MenuItem to="/starships">Starships</MenuItem>
-      <MenuItem to="/vehicles">Vehicles</MenuItem>
+      <MenuItem to="/covers">Books</MenuItem>
+      <MenuItem to="/poems">Poems</MenuItem>  
       <MenuItem isLast>
         <Button
           size="sm"

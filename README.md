@@ -2,19 +2,19 @@
 <br />
 <p align="center">
 
-  <h3 align="center">Star Wars Wiki</h3>
+  <h3 align="center">Books and Poetry</h3>
 
   <p align="center">
     Website made using NextJS.
     <br />
-    <a href="https://github.com/universallyry/starwars-wiki"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/universallyry/booksAndPoetry"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/universallyry/starwars-wiki">View Demo</a>
+    <a href="https://github.com/universallyry/booksAndPoetry">View Demo</a>
     ·
-    <a href="https://github.com/universallyry/starwars-wiki/issues">Report Bug</a>
+    <a href="https://github.com/universallyry/booksAndPoetry/issues">Report Bug</a>
     ·
-    <a href="https://github.com/universallyry/starwars-wiki/issues">Request Feature</a>
+    <a href="https://github.com/universallyry/booksAndPoetry/issues">Request Feature</a>
   </p>
 </p>
 
@@ -54,7 +54,8 @@
 
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
-- [Star Wars API](https://github.com/amitmtrn/swapi-ts)
+- [Open Library API](https://openlibrary.org/developers/api)
+- [The Internet's first Poetry API](https://poetrydb.org)
 
 <!-- GETTING STARTED -->
 
@@ -80,7 +81,7 @@ yarn dev
 Clone the repo
 
 ```sh
-git clone https://github.com/UniversallyRy/starWars-wiki.git
+git clone https://github.com/UniversallyRy/booksAndPoetry.git
 ```
 
 Install NPM packages
@@ -101,7 +102,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-See the [open issues](https://github.com/universallyry/starwars-wiki/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/universallyry/booksAndPoetry/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
