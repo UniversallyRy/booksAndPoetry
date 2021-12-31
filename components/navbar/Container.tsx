@@ -5,13 +5,14 @@ const NavBarContainer = ({ children, ...props }: any) => {
       <Flex
         as="nav"
         align="center"
-        justify="space-between"
-        wrap="wrap"
+        justify="flex-end"
         w="100%"
+        h={12}
         mb={8}
-        p={8}
+        p={1}
         bg={["primary.500", "primary.500", "red.900", "red.900"]}
         color={["orange.300", "orange.300", "orange.300", "orange.300"]}
+        opacity={[0.5]}
         {...props}
       >
         {children}

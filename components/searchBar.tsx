@@ -10,34 +10,39 @@ const SearchBar = ( props:any ) => {
         align="center"
         position= "relative"
         marginBottom= "35px"
+        boxShadow="md"
         >
         <Box
+          boxShadow="xl"
           width="100%"
-          height="30px"
           borderTop="hidden"
-          borderLeft="hidden"
           borderRight="hidden"
+          borderLeft="hidden"
+          borderBottomStyle="groove"
           borderColor= "black"
           justify="center"
-          borderRadius={0}
+          borderWidth={0.8}
+          opacity={0.6}   
+          borderRadius={1}
           align="center"
           backgroundColor= "transparent"
         >
           <DebounceInput
             minLength={3}
             debounceTimeout={300}
-            style={{color: "orange",padding: "2px", height:"40px", width:"100%", backgroundColor: "transparent", borderWidth: "0.5px", borderBottomColor: "black"}}
+            style={{ outline:"none", color: "orange",padding: "8px", height:"40px", width:"100%", backgroundColor: "transparent", borderBottomColor: "black", borderInlineColor:"black"}}
             value={value}
             placeholder="Look Up A Favorite"
             onChange={changeHandler} 
           />
           <IconButton
             w="20px"
-            h="45px"
+            h="46px"
             color= "gray"
             position= "absolute"
-            top= {-2} 
-            m={1}
+            boxShadow="md"
+            borderRadius={2}
+            top= {-1} 
             aria-label="Search Icon" 
             _focus={{boxShadow: "none"}}
             _placeholder={{color: "gray"}}

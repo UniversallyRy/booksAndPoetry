@@ -60,16 +60,6 @@ const Books: NextPage = ({ book }: InferGetStaticPropsType<GetStaticProps>) => {
     console.log('my query exists!!', query);
   }, [query]);
 
-  // const fetchData = () => {
-  //   axios.get("https://openlibrary.org/isbn/9780140328721")
-  //   .then((res) => {
-  //     setData(res.data)
-  //     console.log(res.data)
-  //   })
-  //   .catch(err => console.log(err));
-  // }
-  
-  // useEffect(() => fetchData(), [data])
   if (!data) return <div>loading...</div>
   if (error) return <div>failed to load</div>
 

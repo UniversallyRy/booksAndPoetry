@@ -4,7 +4,7 @@ import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
 const RatingStars = () => {
   let starItems = [];
   for (let i = 0; i < 5; i++) {
-    starItems.push(<><IconButton aria-label='rating' size='sm' key={i} icon={<StarIcon/>} /></>);
+    starItems.push(<><IconButton mr={0} aria-label='rating' size='sm' key={i} icon={<StarIcon/>} /></>);
   }
 
   return (<> {starItems} </>);
@@ -27,9 +27,9 @@ const BookRating = ( props: { rating: any; count: any; } ) => {
         backgroundColor= 'rgba($color: $black, $alpha: 0.65)'
     >
       <Text 
-        fontSize='18px'
-        m= '10px 0 0 0'
+        fontSize='lg'
         display= 'block'
+        m= '10px 0 0 0'
         color='orange.300'
       >
         { rating > 0 && rating !== undefined ? rating : 0 }
@@ -40,8 +40,9 @@ const BookRating = ( props: { rating: any; count: any; } ) => {
         width= "116px"
         height= "18px"
         mb= "20px"
-        mr='35px'
+        mr='35px' 
         position='relative'
+        boxShadow="md"
       >
         <Flex 
            _last={{marginRight: 0}}
@@ -54,13 +55,14 @@ const BookRating = ( props: { rating: any; count: any; } ) => {
             // width= "116px"
             height= "33px"
             mb= "20px"
+            mr='35px'
             position= "absolute"
             overflow= "hidden"
             top= {0}
             left= {0}
             zIndex= {1}
             width={`${divWidth}%`}
-        >
+            >
             <Flex 
                 height= "18px"
                 color={count > 0 ? 'yellow': 'white'}

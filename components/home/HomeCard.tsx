@@ -59,7 +59,7 @@ function HomeCard({cardInfo, ...props}:any) {
             </Button>
           </Stack>
         </Stack>
-        <Flex
+        <Flex 
           flex={1}
           justify={'center'}
           align={'center'}
@@ -76,9 +76,9 @@ function HomeCard({cardInfo, ...props}:any) {
           />
           <Box
             position={'relative'}
-            height={'300px'}
-            rounded={'2xl'}
-            boxShadow={'2xl'}
+            height={'100%'}
+            rounded={'md'}
+            boxShadow={'md'}
             width={'full'}
             overflow={'hidden'}>
             <Image
