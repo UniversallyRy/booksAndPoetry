@@ -1,67 +1,26 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType} from 'next'
-import Head from 'next/head'
-import { Box, Container, Text } from '@chakra-ui/react'
-import CoverList from '../components/bookCovers/CoverList'
-import axios from 'axios'
-import { CoverType } from '../components/bookCovers/CoverCard'
-import { SetStateAction, useEffect, useState } from 'react'
-import useSWR from 'swr'
-import SearchBar from '../components/searchBar'
-import CoverDetails from '../components/bookCovers/CoverDetails'
+import type { NextPage, GetStaticProps} from 'next';
+import Head from 'next/head';
+import { useState } from 'react';
+import { Container } from '@chakra-ui/react';
+import axios from 'axios';
+import SearchBar from '../components/searchBar';
+import CoverCard, { BookProps } from '../components/bookCover/CoverCard';
+import { searchHandler, bookHandler } from '../utils';
+// const fetcher = (url: string) => axios.get(url).then(res => res.data)
 
-export type DataProps = {
-  books: {
-    key: string | null;
-    name: string | null;
-    subject_type: string | null;
-    work_count: number,
-    works: CoverType[];
-  }
-}
-const fetcher = (url: string) => axios.get(url).then(res => res.data)
-
-const Books: NextPage = ({ book }: any) => {
-  const [value, setValue] = useState('');
+const Book: NextPage = ({ book }:any) => {
   const [bookObj, setBook] = useState({
     searchedInput: '',
     items: [],
     item: book,
   });
-  
   // Search bookObj by searchedInput
-  const searchHandler = ( e: { target: { value: any } } ) => {
-    const searchedInput = e.target.value;
-
-    if (searchedInput) {
-      axios(`https://www.googleapis.com/books/v1/volumes?q=${searchedInput}`)
-        .then( res => res.data )
-        .then( data => {
-          if (data.totalItems > 0) {
-            setBook({ 
-              ...bookObj,
-              searchedInput: searchedInput,
-              items: data.items
-            });
-          }
-        })
-        .catch( (err) => console.log(err) );
-    } else {
-      setBook({ 
-        ...bookObj,
-        items: [], 
-      });
-    }
+  const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
+    searchHandler(e, axios, bookObj, setBook)
   }
-
-  const getBookHandler = ( id: any ) => {
-    const { items } = bookObj;
-    const targetItem = items.filter((item:any) => { return item.id === id })[0];
-    
-    setBook({
-      searchedInput: '',
-      items: [],
-      item: targetItem
-    });
+  // change dropdown book onClick
+  const getBookHandler = ( id: string ) => {
+    bookHandler(id, bookObj, setBook)
   }
 
   const { searchedInput, items, item } = bookObj;
@@ -76,45 +35,23 @@ const Books: NextPage = ({ book }: any) => {
       <SearchBar
         value={searchedInput}
         data={items}
-        changeHandler={searchHandler}
+        changeHandler={getSearchHandler}
         clickHandler={getBookHandler}
       />
-      <CoverDetails data={item} />
-      {/* <CoverList books={item}/>  */}
-
+      <CoverCard data={item} />
     </Container>
   )
 }
 export const getStaticProps: GetStaticProps = async ( context:any) => {
   // const bookId = params.id
   const res = await axios.get(`https://www.googleapis.com/books/v1/volumes/yl4dILkcqm4C`)
-  const book: DataProps = await res.data
+  const book: BookProps = await res.data
   return {
     props: {
       book: book, 
-      // bookId,
-      // dehydratedState: dehydrate(queryClient),
-      // 6 hours before refresh
       revalidate: 60 * 60 * 6,
     },
   };
 };
-  
-  // export const getStaticPaths = async () => {
-  //   const res = await axios.get('https://www.googleapis.com/books/v1/volumes/yl4dILkcqm4C')
-  //   const books: DataProps = await res.data
-  //   const paths =  books.works.map((item:any) => {
-  //     const bookId = item.key.slice(7,);
-  //     return {
-  //       params: {
-  //         id: bookId,
-  //       }
-  //     }
-  //   });
-  //   return {
-  //     paths,
-  //     fallback: false
-  //   }
-  // };
 
-export default Books
+export default Book;
