@@ -54,7 +54,7 @@
 
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
-- [Open Library API](https://openlibrary.org/developers/api)
+- [Google Books API](https://developers.google.com/books)
 - [The Internet's first Poetry API](https://poetrydb.org)
 
 <!-- GETTING STARTED -->
