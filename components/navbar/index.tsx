@@ -1,23 +1,19 @@
-import{ useState } from 'react'
-import NavBarContainer from './Container'
-import { Button, Flex, useColorMode } from '@chakra-ui/react'
+import { Button, useColorMode } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import NavBarContainer from './Container';
 
-const Navbar = ( props: any ) => {
-    const { colorMode, toggleColorMode } = useColorMode();
-    const [ isOpen, setIsOpen ] = useState( false )
-    const toggle = () => setIsOpen( !isOpen )
+type NavBarProps = React.PropsWithChildren<{}>;
 
-    return(
-      <NavBarContainer { ...props }>
-        <Flex align="center">
-        </Flex>
-          <Button alignSelf='flex-end' onClick={ toggleColorMode }>
-            { colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
-          </Button>
-      </NavBarContainer>
-    )
-  }
+const Navbar = ( props: NavBarProps ) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  return (
+    <NavBarContainer { ...props }>
+      <Button onClick={ toggleColorMode }>
+        { colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
+      </Button>
+    </NavBarContainer>
+  );
+};
 
 export default Navbar;
-  
