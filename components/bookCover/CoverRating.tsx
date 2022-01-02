@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, IconButton, Text } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons'; 
 
 export type RatingProps = {
@@ -11,11 +11,13 @@ const RatingStars = () => {
   for (let i = 0; i < 5; i++) { 
     starItems.push(
         <IconButton 
-          mr={ 0 } 
-          size='sm' 
+          size={ 'sm' }
+          borderRadius={"base"}
+          mx={0.5} 
           aria-label={ `Rating Star_${i}` } 
           key={ `star${i}` } 
           icon={ <StarIcon/> } 
+          _focus={{ boxShadow: "none" }}
         />
     )
   };
@@ -27,16 +29,15 @@ const BookRating = ( props: RatingProps ) => {
 
   let divWidth = 0;
   if (rating > 0 && rating !== undefined) {
-    divWidth = rating * 27.5;
+    divWidth = rating * 27.7;
   }
 
   return (
-    <Box 
+    <Center 
       display="block"
-      width= '100%'
-      padding= '40px 20px'
-      borderRadius='5px'
-      backgroundColor= 'rgba($color: $black, $alpha: 0.65)'
+      width={ "full" }
+      align={"center"}
+      padding= {'40px 20px'}
     >
       <Text 
         fontSize='lg'
@@ -51,12 +52,10 @@ const BookRating = ( props: RatingProps ) => {
       </Text>
       <Box 
         display= "inline-block"
-        width= "116px"
-        height= "18px"
-        mb= "20px"
-        mr='35px' 
+        width= "130px"
+        mr={45} 
         position='relative'
-        boxShadow="md"
+        boxShadow="xl"
       >
         <Flex 
           _last={{ marginRight: 0 }}
@@ -67,8 +66,6 @@ const BookRating = ( props: RatingProps ) => {
         <Box 
           display= "inline-block"
           height= "33px"
-          mr='35px'
-          mb= "20px"
           position= "absolute"
           overflow= "hidden"
           top= {0}
@@ -78,14 +75,14 @@ const BookRating = ( props: RatingProps ) => {
         >
           <Flex 
             height= "18px"
-            color={ count > 0 ? 'yellow': 'white' }
+            color={ count > 0 ? 'yellow.600': 'white' }
             _last={{ marginRight: 0 }}
           >
             <RatingStars />
           </Flex>
         </Box>
       </Box>
-    </Box>
+    </Center>
   );
 };
 

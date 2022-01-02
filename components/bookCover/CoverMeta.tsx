@@ -1,4 +1,4 @@
-import { Box, VStack, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
 export type MetaProps = {
   name: string;
@@ -8,18 +8,16 @@ export type MetaProps = {
 const BookMeta = ( props: MetaProps ) => {
   const { name, value } = props;
   return (
-    <VStack>
-      <Box>
-        <Heading
-          color= "red.900"
-          fontSize= "sm"
-          fontWeight= { 600 }
-        >
-          { name }
-        </Heading>
-        <Text fontSize="lg">{ value }</Text>
-      </Box>
-    </VStack>
+    <Box align={ "center" }>
+      <Heading
+        color={ "red.900" }
+        fontSize={ "sm" }
+        fontWeight={ 600 }
+      >
+        { name }
+      </Heading>
+      <Text fontSize="lg">{ value }</Text>
+    </Box>
   );
 };
 

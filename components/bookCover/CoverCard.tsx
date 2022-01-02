@@ -1,4 +1,4 @@
-import { Center, VStack, HStack, useColorModeValue } from '@chakra-ui/react';
+import { Stack, Center, VStack, useColorModeValue } from '@chakra-ui/react';
 import CoverImage from './CoverImage';
 import CoverRating  from './CoverRating';
 import CoverText from './CoverText';
@@ -94,20 +94,17 @@ const CoverCard = ( props: BookProps  ) => {
   
   return (
     <Center 
-      width='100%'
-      padding= '40px 20px'
-      color='white'
-      backgroundColor={ useColorModeValue('telegram.900', 'blue.900') }  
-      boxShadow={'3xl' }
-      shadow="lg"
+      w={ ["sm", "sm", "xl", "2xl"] }
+      padding= {['2px', '5px', '10px']}
+      boxShadow={ "xl" }
       rounded={ 'sm' }
-      p={ 1 }
+      backgroundColor={ "transparent" }  
       { ...props }
     >
       {
        !isEmpty( props.data )
-        ?  <HStack  w={ 550 } align="center" justify="center" rounded="xl" boxShadow="sm">
-             <VStack mr={ 1 }>
+        ?  <Stack direction={["column", "column", "row"]} rounded="base" boxShadow="sm">
+             <VStack>
                <CoverImage imageLink={ imageLink } title={ title }/>
                <CoverRating rating={ averageRating } count={ ratingsCount } />
              </VStack>
@@ -122,7 +119,7 @@ const CoverCard = ( props: BookProps  ) => {
                categories={ categories }
                webReaderLink={ webReaderLink }
              />
-           </HStack> 
+           </Stack> 
         :  <Loading />
       }
     </Center>
