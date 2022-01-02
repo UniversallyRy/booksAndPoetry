@@ -21,14 +21,14 @@ export type onClickProps = {
     setBook: Dispatch<SetStateAction<{ searchedInput: string; items: never[]; item: BookProps }>>;
 }
 
-export const searchHandler = ({ e, axios, bookObj, setBook}: SearchProps ) => {
+export const searchHandler = ({ e, axios, bookObj, setBook }: SearchProps ) => {
     const searchedInput = e.target.value;
   
     if (searchedInput) {
       axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchedInput}`)
-        .then( (res:any) => res.data )
-        .then( (data:any) => {
-          if (data.totalItems > 0) {
+        .then(( res ) => res.data )
+        .then((data ) => {
+          if ( data.totalItems > 0 ) {
             setBook({ 
               ...bookObj,
               searchedInput: searchedInput,
@@ -36,7 +36,7 @@ export const searchHandler = ({ e, axios, bookObj, setBook}: SearchProps ) => {
             });
           }
         })
-        .catch( (err:any) => console.log(err) );
+        .catch(( err ) => console.log( err ));
     } else {
       setBook({ 
         ...bookObj,
@@ -45,9 +45,9 @@ export const searchHandler = ({ e, axios, bookObj, setBook}: SearchProps ) => {
     }
 }
   
-export const bookHandler = ({ id, bookObj, setBook }: onClickProps) => {
+export const bookHandler = ({ id, bookObj, setBook }: onClickProps ) => {
     const { items } = bookObj;
-    const targetItem = items.filter((item:any) => { return item.id === id })[0];
+    const targetItem = items.filter(( item:{ id: number }) => { return item.id === id })[0];
     
     setBook({
       searchedInput: '',
