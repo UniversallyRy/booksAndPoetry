@@ -1,6 +1,7 @@
 import { Button, Heading, Text, VStack, useColorModeValue } from '@chakra-ui/react';
 import CoverMeta from './CoverMeta';
 import { truncate, languages } from '../../utils';
+import moment from 'moment';
 
 export type TextProps = {
     title: string | undefined; 
@@ -16,12 +17,14 @@ export type TextProps = {
 
 const CoverText = ( props: TextProps ) => {
     const { title, publishedDate, authors, pageCount, categories, language, description, webReaderLink } = props;
+    const momentDate = moment(publishedDate).format("MMMM Do, YYYY")
+    console.log(momentDate)
     return (
         <VStack bg={ useColorModeValue('gray.200', 'gray.900') } p={ 2 } rounded={ "xs" } boxShadow={ "base" }>
             <Heading align={"center"} color={ useColorModeValue('orange.400', "orange.300") } fontSize={ "lg" } fontWeight={ 600 }>
                 { title }
-                { publishedDate !== undefined && <span> – {publishedDate} </span> }
             </Heading>
+            { publishedDate !== undefined && <span>*Released – { momentDate } </span> }
             { authors !== undefined && authors.length > 0 && <CoverMeta name={ "Author" } value={ authors.join(', ') } /> }
             { pageCount !== undefined && <CoverMeta name={ "Page Amount" } value={ pageCount } /> }
             { categories !== undefined && <CoverMeta name={ "Category" } value={ categories } /> }
