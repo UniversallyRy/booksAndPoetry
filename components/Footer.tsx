@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <HStack justify="center" align="center">
         <Text
-          mt={5} 
+          mt={ 5 } 
           as="a"
           fontSize="xs"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -13,7 +13,7 @@ const Footer = () => {
         >
           Powered by{' '}
           <Box as="span">
-            <Image src="/vercel.svg" alt="Vercel Logo" width={12} height={12} />
+            <Image src="/vercel.svg" alt="Vercel Logo" width={ 12 } height={ 12 } />
           </Box>
         </Text>
     </HStack>

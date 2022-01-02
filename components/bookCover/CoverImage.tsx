@@ -41,7 +41,7 @@ function CoverImage( props: ImageProps ) {
           borderRadius={ 4 }
           ml={ 2 }
           w={ 325 } 
-          alt={ `${title} image` } 
+          alt={ `${ title } image` } 
           src={ imageLink !== undefined ? imageLink : './static/empty-cover.jpeg' }
           thumbnail='true'
         />

@@ -11,15 +11,15 @@ const RatingStars = () => {
   for (let i = 0; i < 5; i++) { 
     starItems.push(
         <IconButton 
-          mr={0} 
+          mr={ 0 } 
           size='sm' 
-          aria-label={`Rating Star_${i}`} 
-          key={`star${i}`} 
-          icon={<StarIcon/>} 
+          aria-label={ `Rating Star_${i}` } 
+          key={ `star${i}` } 
+          icon={ <StarIcon/> } 
         />
     )
   };
-  return (<> {starItems} </>);
+  return (<> { starItems } </>);
 };
 
 const BookRating = ( props: RatingProps ) => {
@@ -59,7 +59,7 @@ const BookRating = ( props: RatingProps ) => {
         boxShadow="md"
       >
         <Flex 
-          _last={{marginRight: 0}}
+          _last={{ marginRight: 0 }}
           height= "18px"
         >
           <RatingStars />  
@@ -74,12 +74,12 @@ const BookRating = ( props: RatingProps ) => {
           top= {0}
           left= {0}
           zIndex= {1}
-          width={`${divWidth}%`}
+          width={ `${divWidth}%` }
         >
           <Flex 
             height= "18px"
-            color={count > 0 ? 'yellow': 'white'}
-            _last={{marginRight: 0}}
+            color={ count > 0 ? 'yellow': 'white' }
+            _last={{ marginRight: 0 }}
           >
             <RatingStars />
           </Flex>

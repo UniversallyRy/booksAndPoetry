@@ -10,4 +10,4 @@ const CoverList = () => {
   )
 }
 
-export default CoverList
+export default CoverList;

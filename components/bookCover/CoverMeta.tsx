@@ -13,11 +13,11 @@ const BookMeta = ( props: MetaProps ) => {
         <Heading
           color= "red.900"
           fontSize= "sm"
-          fontWeight= {600}
+          fontWeight= { 600 }
         >
-          {name}
+          { name }
         </Heading>
-        <Text fontSize="lg">{value}</Text>
+        <Text fontSize="lg">{ value }</Text>
       </Box>
     </VStack>
   );

@@ -8,11 +8,11 @@ const Layout = ({ children, props } :any) => {
         direction="column"
         align="center"
         m="0 auto"
-        {...props}
+        { ...props }
     >
       <Navbar />
       <main>
-        {children}
+        { children }
       </main>
       <footer>
         <Footer/>

@@ -74,11 +74,11 @@ export type BookProps = {
 const CoverCard = ( props: BookProps  ) => {
   let title, imageLink, averageRating = 0, ratingsCount = 0, publishedDate, authors, pageCount, categories, language, description, webReaderLink;
     // if props aren't empty, deconstruct data obj 
-  if (!isEmpty(props.data)) {
+  if (!isEmpty( props.data )) {
     const { volumeInfo, accessInfo } = props.data;
 
     title = volumeInfo.title;
-    if (volumeInfo.imageLinks !== undefined && !isEmpty(volumeInfo.imageLinks)) {
+    if ( volumeInfo.imageLinks !== undefined && !isEmpty(volumeInfo.imageLinks) ) {
       imageLink   = volumeInfo.imageLinks.thumbnail;
     }
     averageRating = (volumeInfo.averageRating) ? volumeInfo.averageRating : averageRating ;
@@ -97,30 +97,30 @@ const CoverCard = ( props: BookProps  ) => {
       width='100%'
       padding= '40px 20px'
       color='white'
-      backgroundColor={useColorModeValue('telegram.900', 'blue.900')}  
-      boxShadow={'3xl'}
+      backgroundColor={ useColorModeValue('telegram.900', 'blue.900') }  
+      boxShadow={'3xl' }
       shadow="lg"
-      rounded={'sm'}
-      p={1}
-      {...props}
+      rounded={ 'sm' }
+      p={ 1 }
+      { ...props }
     >
       {
-       !isEmpty(props.data)
-        ?  <HStack  w={550} align="center" justify="center" rounded="xl" boxShadow="sm">
-             <VStack mr={1}>
-               <CoverImage imageLink={imageLink} title={title}/>
-               <CoverRating rating={averageRating} count={ratingsCount} />
+       !isEmpty( props.data )
+        ?  <HStack  w={ 550 } align="center" justify="center" rounded="xl" boxShadow="sm">
+             <VStack mr={ 1 }>
+               <CoverImage imageLink={ imageLink } title={ title }/>
+               <CoverRating rating={ averageRating } count={ ratingsCount } />
              </VStack>
              <CoverText 
-               title={title} 
-               imageLink={imageLink}
-               authors={authors}
-               language={language}
-               publishedDate={publishedDate}
-               description={description}
-               pageCount={pageCount}
-               categories={categories}
-               webReaderLink={webReaderLink}
+               title={ title } 
+               imageLink={ imageLink }
+               authors={ authors }
+               language={ language }
+               publishedDate={ publishedDate }
+               description={ description }
+               pageCount={ pageCount }
+               categories={ categories }
+               webReaderLink={ webReaderLink }
              />
            </HStack> 
         :  <Loading />

@@ -7,15 +7,15 @@ const NavBarContainer = ({ children, ...props }: any) => {
         align="center"
         justify="flex-end"
         w="100%"
-        h={12}
-        mb={8}
-        p={1}
-        bg={["primary.500", "primary.500", "red.900", "red.900"]}
-        color={["orange.300", "orange.300", "orange.300", "orange.300"]}
-        opacity={[0.5]}
-        {...props}
+        h={ 12 }
+        mb={ 8 }
+        p={ 1 }
+        bg={[ "primary.500", "primary.500", "red.900", "red.900" ]}
+        color={[ "orange.300", "orange.300", "orange.300", "orange.300" ]}
+        opacity={[ 0.5 ]}
+        { ...props }
       >
-        {children}
+        { children }
       </Flex>
     )
   }

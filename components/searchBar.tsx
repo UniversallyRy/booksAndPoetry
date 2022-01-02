@@ -1,6 +1,11 @@
-import { SearchIcon } from '@chakra-ui/icons';
-import { Box, Flex, IconButton, List, ListItem } from '@chakra-ui/react';
 import { DebounceInput } from 'react-debounce-input';
+import { Box, Flex, IconButton, List, ListItem } from '@chakra-ui/react';  
+import { SearchIcon } from '@chakra-ui/icons';
+
+export type ListProps = {
+  id: string;
+  volumeInfo: { title:string };
+}
 
 const SearchBar = ( props:any ) => {
     const { value, changeHandler, data, clickHandler } = props;
@@ -21,19 +26,19 @@ const SearchBar = ( props:any ) => {
           borderBottomStyle="groove"
           borderColor= "black"
           justify="center"
-          borderWidth={0.8}
-          opacity={0.6}   
-          borderRadius={1}
+          borderWidth={ 0.8 }
+          opacity={ 0.6 }   
+          borderRadius={ 1 }
           align="center"
           backgroundColor= "transparent"
         >
           <DebounceInput
-            minLength={3}
-            debounceTimeout={300}
-            style={{ outline:"none", color: "orange",padding: "8px", height:"40px", width:"100%", backgroundColor: "transparent", borderBottomColor: "black", borderInlineColor:"black"}}
-            value={value}
+            minLength={ 3 }
+            debounceTimeout={ 300 }
+            style={{ outline:"none", color: "orange",padding: "8px", height:"40px", width:"100%", backgroundColor: "transparent", borderBottomColor: "black", borderInlineColor:"black" }}
+            value={ value }
             placeholder="Look Up A Favorite"
-            onChange={changeHandler} 
+            onChange={ changeHandler } 
           />
           <IconButton
             w="20px"
@@ -41,12 +46,12 @@ const SearchBar = ( props:any ) => {
             color= "gray"
             position= "absolute"
             boxShadow="md"
-            borderRadius={2}
-            top= {-1} 
+            borderRadius={ 2 }
+            top= { -1 } 
             aria-label="Search Icon" 
-            _focus={{boxShadow: "none"}}
-            _placeholder={{color: "gray"}}
-            icon={<SearchIcon/>} 
+            _focus={{ boxShadow: "none" }}
+            _placeholder={{ color: "gray" }}
+            icon={ <SearchIcon/> } 
           />
         </Box>
 
@@ -56,7 +61,7 @@ const SearchBar = ( props:any ) => {
               boxShadow="md"
               width= "100%" 
               max-height= "250px"
-              margin= {0}
+              margin= { 0 }
               padding= "10px 0"
               overflow-y= "auto"
               top= "42px"
@@ -65,13 +70,13 @@ const SearchBar = ( props:any ) => {
               backgroundColor="white"
               borderBottomRightRadius="10px"
               borderBottomLeftRadius="10px"
-              zIndex= {99}
+              zIndex= { 99 }
             >
               {
-              data.map((book:any) => (
+              data.map(( book: ListProps ) => (
                 <ListItem 
-                  key={book.id}
-                  onClick={() => clickHandler(book.id)}
+                  key={ book.id }
+                  onClick={ () => clickHandler( book.id )}
                   cursor= "pointer"
                   fontSize= "14px"
                   width= "100%"
@@ -80,9 +85,9 @@ const SearchBar = ( props:any ) => {
                   padding= "8px 15px"
                   borderBottom= "1px solid gray"
                   transition= '(all .25s)'
-                  _hover={{backgroundColor: "gray"}}
+                  _hover={{ backgroundColor: "gray" }}
                 >
-                  {book.volumeInfo.title}
+                  { book.volumeInfo.title }
                 </ListItem>
               ))}
             </List>

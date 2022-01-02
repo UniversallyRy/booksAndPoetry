@@ -3,11 +3,11 @@ import { ChakraProvider } from '@chakra-ui/react';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps ) {
   return (
     <ChakraProvider>
       <Layout>
-        <Component {...pageProps} />
+        <Component { ...pageProps } />
       </Layout>
     </ChakraProvider>
   )

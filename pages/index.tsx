@@ -1,4 +1,4 @@
-import type { NextPage, GetStaticProps} from 'next';
+import type { NextPage, GetStaticProps, GetStaticPropsContext} from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
 import { Container } from '@chakra-ui/react';
@@ -16,11 +16,11 @@ const Book: NextPage = ({ book }:any) => {
   });
   // Search bookObj by searchedInput
   const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
-    searchHandler({e, axios, bookObj, setBook})
+    searchHandler({ e, axios, bookObj, setBook })
   }
   // change dropdown book onClick
   const getBookHandler = ( id: string ) => {
-    bookHandler({id, bookObj, setBook})
+    bookHandler({ id, bookObj, setBook })
   }
 
   const { searchedInput, items, item } = bookObj;
@@ -33,16 +33,16 @@ const Book: NextPage = ({ book }:any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SearchBar
-        value={searchedInput}
-        data={items}
-        changeHandler={getSearchHandler}
-        clickHandler={getBookHandler}
+        value={ searchedInput }
+        data={ items }
+        changeHandler={ getSearchHandler }
+        clickHandler={ getBookHandler }
       />
-      <CoverCard data={item} />
+      <CoverCard data={ item } />
     </Container>
   )
 }
-export const getStaticProps: GetStaticProps = async ( context:any) => {
+export const getStaticProps: GetStaticProps = async ( context:GetStaticPropsContext ) => {
   // const bookId = params.id
   const res = await axios.get(`https://www.googleapis.com/books/v1/volumes/yl4dILkcqm4C`)
   const book: BookProps = await res.data
