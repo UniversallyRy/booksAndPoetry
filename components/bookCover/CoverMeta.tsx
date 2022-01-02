@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 export type MetaProps = {
   name: string;
@@ -10,7 +10,7 @@ const BookMeta = ( props: MetaProps ) => {
   return (
     <Box align={ "center" }>
       <Heading
-        color={ "red.900" }
+        color={ useColorModeValue("red.400", "red.900") }
         fontSize={ "sm" }
         fontWeight={ 600 }
       >

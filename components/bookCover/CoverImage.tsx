@@ -26,6 +26,10 @@ function CoverImage( props: ImageProps ) {
       <Box
         position={ 'relative' }
         overflow={ 'hidden' }
+        borderWidth={5}
+        borderColor={"transparent"}
+        borderRadius={7}
+        boxShadow={"md"}
       >
         <Image 
           objectFit='cover' 

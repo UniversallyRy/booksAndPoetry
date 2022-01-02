@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react';
-import { Box, Flex, List, ListItem, IconButton, HStack } from '@chakra-ui/react';  
+import { Box, List, ListItem, IconButton, HStack } from '@chakra-ui/react';  
 import { SearchIcon } from '@chakra-ui/icons';
 import { DebounceInput } from 'react-debounce-input';
 
@@ -23,7 +23,7 @@ const SearchBar = ( props: SearchProps ) => {
       position={ "relative" }
       mt={ 8 }
       mb={ 8 }
-      boxShadow={ "xl" }
+      boxShadow={ ["base", "md"] }
       w={ ["sm", "sm", "xl", "2xl"] }
 
     >
