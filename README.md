@@ -5,7 +5,7 @@
   <h3 align="center">Books and Poetry</h3>
 
   <p align="center">
-    Website made using NextJS.
+    Website made using NextJS and ChakraUI.
     <br />
     <a href="https://github.com/universallyry/booksAndPoetry"><strong>Explore the docs »</strong></a>
     <br />
@@ -55,7 +55,7 @@
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
 - [Google Books API](https://developers.google.com/books)
-- [The Internet's first Poetry API](https://poetrydb.org)
+- [The Internet's First Poetry API](https://poetrydb.org)
 
 <!-- GETTING STARTED -->
 
