@@ -1,75 +1,71 @@
-import { DebounceInput } from 'react-debounce-input';
-import { Box, Flex, IconButton, List, ListItem } from '@chakra-ui/react';  
+import { ChangeEventHandler } from 'react';
+import { Box, Flex, List, ListItem, IconButton, HStack } from '@chakra-ui/react';  
 import { SearchIcon } from '@chakra-ui/icons';
+import { DebounceInput } from 'react-debounce-input';
 
 export type ListProps = {
   id: string;
   volumeInfo: { title:string };
 }
 
-const SearchBar = ( props:any ) => {
-    const { value, changeHandler, data, clickHandler } = props;
-  
-    return (
-      <Flex 
-        align="center"
-        position= "relative"
-        marginBottom= "35px"
-        boxShadow="md"
-        >
-        <Box
-          boxShadow="xl"
-          width="100%"
-          borderTop="hidden"
-          borderRight="hidden"
-          borderLeft="hidden"
-          borderBottomStyle="groove"
-          borderColor= "black"
-          justify="center"
-          borderWidth={ 0.8 }
-          opacity={ 0.6 }   
-          borderRadius={ 1 }
-          align="center"
-          backgroundColor= "transparent"
-        >
-          <DebounceInput
-            minLength={ 3 }
-            debounceTimeout={ 300 }
-            style={{ outline:"none", color: "orange",padding: "8px", height:"40px", width:"100%", backgroundColor: "transparent", borderBottomColor: "black", borderInlineColor:"black" }}
-            value={ value }
-            placeholder="Look Up A Favorite"
-            onChange={ changeHandler } 
-          />
-          <IconButton
-            w="20px"
-            h="46px"
-            color= "gray"
-            position= "absolute"
-            boxShadow="md"
-            borderRadius={ 2 }
-            top= { -1 } 
-            aria-label="Search Icon" 
-            _focus={{ boxShadow: "none" }}
-            _placeholder={{ color: "gray" }}
-            icon={ <SearchIcon/> } 
-          />
-        </Box>
+export type SearchProps = {
+  data: ListProps[];
+  value: string;
+  changeHandler: ChangeEventHandler<HTMLInputElement>;
+  clickHandler: (id: string) => void;
+}
 
+const SearchBar = ( props: SearchProps ) => {
+  const { value, changeHandler, data, clickHandler } = props;
+  
+  return (
+    <Box 
+      position={ "relative" }
+      mt={ 8 }
+      mb={ 8 }
+      boxShadow={ "xl" }
+      w={ ["sm", "sm", "xl", "2xl"] }
+
+    >
+      <HStack
+        width={ "full" }
+        opacity={ 0.7 }   
+        borderRadius={ [0.5, 1] }
+        justifyContent={ "space-between" }
+      >
+        <DebounceInput
+          minLength={ 3 }
+          debounceTimeout={ 300 }
+          style={{ outline:"none", color: "orange",padding: "6px", width: "90%",height:"40px", backgroundColor: "transparent" }}
+          value={ value }
+          placeholder={ "Look Up A Favorite" }
+          onChange={ changeHandler } 
+        />
+        <IconButton
+          w={"10%"}
+          color={ "gray.600" }
+          boxShadow={ ["sm", "md"] }
+          rounded="sm"
+          icon={ <SearchIcon/> } 
+          aria-label={ "Search Icon" } 
+          _focus={{ boxShadow: "none" }}
+          _placeholder={{ color: "gray" }}
+        />
+      </HStack>
         {
           data.length > 0 &&
             <List 
-              boxShadow="md"
-              width= "100%" 
-              max-height= "250px"
-              margin= { 0 }
-              padding= "10px 0"
-              overflow-y= "auto"
-              top= "42px"
-              position= "absolute"
-              color= "black"
-              backgroundColor="white"
-              borderBottomRightRadius="10px"
-              borderBottomLeftRadius="10px"
+              width={ "full" } 
+              position={ "absolute" }
+              boxShadow={ "md" }
+              max-height={ "250px" }
+              margin={ 0 }
+              overflow-y={ "auto" }
+              top={ "42px" }
+              color={ "#000" }
+              bg={ "red.900" }
+              borderBottomRightRadius={ "4px" }
+              borderBottomLeftRadius={ "4px" }
               zIndex= { 99 }
             >
               {
@@ -77,14 +73,14 @@ const SearchBar = ( props:any ) => {
                 <ListItem 
                   key={ book.id }
                   onClick={ () => clickHandler( book.id )}
-                  cursor= "pointer"
-                  fontSize= "14px"
-                  width= "100%"
-                  list-style= "none"
-                  display= "block"
-                  padding= "8px 15px"
-                  borderBottom= "1px solid gray"
-                  transition= '(all .25s)'
+                  cursor={ "pointer" }
+                  fontSize={ "14px" }
+                  width={ "full" }
+                  list-style={ "none" }
+                  display={ "block" }
+                  padding={"8px 15px"}
+                  borderBottom={"1px solid gray"}
+                  transition={"(all .25s)"}
                   _hover={{ backgroundColor: "gray" }}
                 >
                   { book.volumeInfo.title }
@@ -92,8 +88,8 @@ const SearchBar = ( props:any ) => {
               ))}
             </List>
         }
-      </Flex>
+      </Box>
     );
-  }
+  };
   
   export default SearchBar;

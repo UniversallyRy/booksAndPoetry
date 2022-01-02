@@ -1,11 +1,11 @@
-import { Box, HStack, Image, Text } from '@chakra-ui/react'
+import { Box, HStack, Image, StackProps, Text } from '@chakra-ui/react'
 
-const Footer = () => {
+const Footer = (props: StackProps) => {
   return (
-    <HStack justify="center" align="center">
+    <HStack justify="center" align="center" {...props}>
         <Text
-          mt={ 5 } 
           as="a"
+          mt={ 5 } 
           fontSize="xs"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
