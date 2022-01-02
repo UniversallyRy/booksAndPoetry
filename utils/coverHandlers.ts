@@ -9,14 +9,14 @@ export type BookObjProps = {
 }
 
 export type SearchProps = {
-    e: {target: { value: string }};
+    e: {target: { value: string | undefined}};
     axios: Axios;
     bookObj: BookObjProps; 
     setBook: Dispatch<SetStateAction<{ searchedInput: string; items: never[]; item: BookProps }>>;
 }
 
 export type onClickProps = {
-    id: number;
+    id: string;
     bookObj: BookObjProps;
     setBook: Dispatch<SetStateAction<{ searchedInput: string; items: never[]; item: BookProps }>>;
 }
@@ -47,7 +47,7 @@ export const searchHandler = ({ e, axios, bookObj, setBook }: SearchProps ) => {
   
 export const bookHandler = ({ id, bookObj, setBook }: onClickProps ) => {
     const { items } = bookObj;
-    const targetItem = items.filter(( item:{ id: number }) => { return item.id === id })[0];
+    const targetItem = items.filter(( item:{ id: string }) => { return item.id === id })[0];
     
     setBook({
       searchedInput: '',
