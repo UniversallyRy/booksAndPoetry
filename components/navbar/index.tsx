@@ -9,7 +9,7 @@ const Navbar = ( props: NavBarProps ) => {
 
   return (
     <NavBarContainer { ...props }>
-      <Button onClick={ toggleColorMode }>
+      <Button onClick={ toggleColorMode } _focus={{ boxShadow: "none" }}>
         { colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
       </Button>
     </NavBarContainer>
