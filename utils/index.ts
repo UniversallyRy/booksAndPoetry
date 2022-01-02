@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export const isEmpty = ( obj: {} ) => {
-  return Object.keys(obj).length === 0;
+  return Object.keys( obj ).length === 0;
 }
   
 export const truncate = ( string: string, size: number ) => {
@@ -74,38 +74,3 @@ export const languages = [
   { code: 'id', name: 'Indonesian' },
   { code: 'yi', name: 'Yiddish' }
 ];
-
-export const searchHandler = ( e: { target: { value: any } }, axios:any, bookObj:{}, setBook: any  ) => {
-  const searchedInput = e.target.value;
-
-  if (searchedInput) {
-    axios(`https://www.googleapis.com/books/v1/volumes?q=${searchedInput}`)
-      .then( (res:any) => res.data )
-      .then( (data:any) => {
-        if (data.totalItems > 0) {
-          setBook({ 
-            ...bookObj,
-            searchedInput: searchedInput,
-            items: data.items
-          });
-        }
-      })
-      .catch( (err:any) => console.log(err) );
-  } else {
-    setBook({ 
-      ...bookObj,
-      items: [], 
-    });
-  }
-}
-
-export const bookHandler = ( id: any, bookObj:{searchedInput: string, items: never[], item: {}}, setBook: Dispatch<SetStateAction<{ searchedInput: string; items: never[]; item: any; }>>) => {
-  const { items } = bookObj;
-  const targetItem = items.filter((item:any) => { return item.id === id })[0];
-  
-  setBook({
-    searchedInput: '',
-    items: [],
-    item: targetItem
-  });
-}
