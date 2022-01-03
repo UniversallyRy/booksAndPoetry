@@ -110,7 +110,6 @@ const CoverCard = ( props: BookProps  ) => {
              </VStack>
              <CoverText 
                title={ title } 
-               imageLink={ imageLink }
                authors={ authors }
                language={ language }
                publishedDate={ publishedDate }
