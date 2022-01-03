@@ -23,6 +23,7 @@ const CoverText = ( props: TextProps ) => {
             p={ 2 } 
             rounded={ "sm" } 
             boxShadow={ "inner" }
+            aria-label={ "div containing info on book" }
         >
             <Heading align={"center"} color={ useColorModeValue('orange.400', "orange.300") } fontSize={ "lg" } fontWeight={ 600 }>
                 { title }

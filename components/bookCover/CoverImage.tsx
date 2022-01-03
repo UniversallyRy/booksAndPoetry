@@ -36,6 +36,7 @@ function CoverImage( props: ImageProps ) {
           borderRadius={ "sm" }
           w={["md", "xl"]}
           alt={ `${ title } image` } 
+          aria-label={ "book thumbnail image" }
           src={ imageLink !== undefined ? imageLink : './static/empty-cover.jpeg' }
           thumbnail={ 'true' }
         />
