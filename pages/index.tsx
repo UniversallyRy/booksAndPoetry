@@ -30,7 +30,10 @@ const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>
         changeHandler={ getSearchHandler }
         clickHandler={ getBookHandler }
       />
-      <CoverCard data={ item } />
+      <CoverCard 
+        data={ item } 
+        aria-label={ "div containing book information" } 
+      />
     </Container>
   );
 };

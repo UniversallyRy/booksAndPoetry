@@ -25,7 +25,7 @@ const SearchBar = ( props: SearchProps ) => {
       mb={ 8 }
       boxShadow={ ["base", "md"] }
       w={ ["sm", "sm", "xl", "2xl"] }
-
+      aria-label="searchBarContainer"
     >
       <HStack
         width={ "full" }
@@ -38,6 +38,7 @@ const SearchBar = ( props: SearchProps ) => {
           debounceTimeout={ 300 }
           style={{ outline:"none", color: "orange",padding: "6px", width: "90%",height:"40px", backgroundColor: "transparent" }}
           value={ value }
+          aria-label={ "input for title searching" }
           placeholder={ "Look Up A Favorite" }
           onChange={ changeHandler } 
         />
@@ -64,6 +65,7 @@ const SearchBar = ( props: SearchProps ) => {
               top={ "42px" }
               color={ "#000" }
               bg={ "red.900" }
+              aria-label={ "list generated from input values" }
               borderBottomRightRadius={ "4px" }
               borderBottomLeftRadius={ "4px" }
               zIndex= { 99 }
@@ -82,6 +84,7 @@ const SearchBar = ( props: SearchProps ) => {
                   borderBottom={"1px solid gray"}
                   transition={"(all .25s)"}
                   _hover={{ backgroundColor: "gray" }}
+                  aria-label={ "list item generated from input" }
                 >
                   { book.volumeInfo.title }
                 </ListItem>
