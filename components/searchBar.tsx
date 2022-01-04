@@ -25,7 +25,6 @@ const SearchBar = ( props: SearchProps ) => {
       mb={ 8 }
       boxShadow={ ["base", "md"] }
       w={ ["sm", "sm", "xl", "2xl"] }
-      aria-label="searchBarContainer"
     >
       <HStack
         width={ "full" }

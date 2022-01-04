@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
-
 export const isEmpty = ( obj: {} ) => {
   return Object.keys( obj ).length === 0;
 }

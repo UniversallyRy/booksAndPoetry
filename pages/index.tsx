@@ -39,7 +39,6 @@ const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>
 };
 
 export const getStaticProps: GetStaticProps = async ( context: GetStaticPropsContext ) => {
-  // const bookId = params.id
   const res = await axios.get(`https://www.googleapis.com/books/v1/volumes/iCWgDwAAQBAJ`);
   const book: BookProps = await res.data;
   return {

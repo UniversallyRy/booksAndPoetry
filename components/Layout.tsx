@@ -1,7 +1,7 @@
-import { Flex } from '@chakra-ui/react'
-import Navbar from './navbar'
-import Footer from './Footer'
-import Head from 'next/head'
+import { Flex } from '@chakra-ui/react';
+import Navbar from './navbar';
+import Footer from './Footer';
+import Head from 'next/head';
 
 const Layout = ({ children, props } :any) => {
   return (
