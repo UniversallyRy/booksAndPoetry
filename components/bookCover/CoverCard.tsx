@@ -1,4 +1,4 @@
-import { Stack, Center, VStack, useColorModeValue } from '@chakra-ui/react';
+import { Stack, Center, VStack } from '@chakra-ui/react';
 import CoverImage from './CoverImage';
 import CoverRating  from './CoverRating';
 import CoverText from './CoverText';

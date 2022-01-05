@@ -10,15 +10,15 @@ const RatingStars = () => {
   let starItems = [];
   for (let i = 0; i < 5; i++) { 
     starItems.push(
-        <IconButton 
-          size={ 'sm' }
-          borderRadius={"base"}
-          mx={0.5} 
-          aria-label={ `Rating Star_${i}` } 
-          key={ `star${i}` } 
-          icon={ <StarIcon/> } 
-          _focus={{ boxShadow: "none" }}
-        />
+      <IconButton 
+        size={ 'sm' }
+        borderRadius={"base"}
+        mx={0.5} 
+        aria-label={ `Rating Star_${i}` } 
+        key={ `star${i}` } 
+        icon={ <StarIcon/> } 
+        _focus={{ boxShadow: "none" }}
+      />
     )
   };
   return (<> { starItems } </>);
@@ -30,7 +30,7 @@ const BookRating = ( props: RatingProps ) => {
   let divWidth = 0;
   if (rating > 0 && rating !== undefined) {
     divWidth = rating * 27.7;
-  }
+  };
 
   return (
     <Center 
