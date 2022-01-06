@@ -35,7 +35,7 @@ function CoverImage( props: ImageProps ) {
           objectFit='cover' 
           borderRadius={ "sm" }
           w={["md", "xl"]}
-          alt={ `${ title } image` } 
+          alt={ `image for book title ${ title }` } 
           aria-label={ "book thumbnail image" }
           src={ imagelink !== undefined ? imagelink : './static/empty-cover.jpeg' }
           thumbnail={ 'true' }
