@@ -3,11 +3,11 @@ import Blob from './Blob';
 
 export type ImageProps = {
   title: string | undefined; 
-  imageLink: string | undefined;
+  imagelink: string | undefined;
 }
 
 function CoverImage( props: ImageProps ) {
-  const { title, imageLink } = props;
+  const { title, imagelink } = props;
   return (
     <Flex 
       justify={ 'center' }
@@ -37,7 +37,7 @@ function CoverImage( props: ImageProps ) {
           w={["md", "xl"]}
           alt={ `${ title } image` } 
           aria-label={ "book thumbnail image" }
-          src={ imageLink !== undefined ? imageLink : './static/empty-cover.jpeg' }
+          src={ imagelink !== undefined ? imagelink : './static/empty-cover.jpeg' }
           thumbnail={ 'true' }
         />
       </Box>

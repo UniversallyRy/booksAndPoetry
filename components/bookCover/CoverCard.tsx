@@ -72,14 +72,14 @@ export type BookProps = {
 }
 
 const CoverCard = ( props: BookProps  ) => {
-  let title, imageLink, averageRating = 0, ratingsCount = 0, publishedDate, authors, pageCount, categories, language, description, webReaderLink;
+  let title, imagelink, averageRating = 0, ratingsCount = 0, publishedDate, authors, pageCount, categories, language, description, webReaderLink;
     // if props aren't empty, deconstruct data obj 
   if (!isEmpty( props.data )) {
     const { volumeInfo, accessInfo } = props.data;
 
     title = volumeInfo.title;
     if ( volumeInfo.imageLinks !== undefined && !isEmpty(volumeInfo.imageLinks) ) {
-      imageLink   = volumeInfo.imageLinks.thumbnail;
+      imagelink   = volumeInfo.imageLinks.thumbnail;
     }
     averageRating = (volumeInfo.averageRating) ? volumeInfo.averageRating : averageRating ;
     ratingsCount  = (volumeInfo.ratingsCount) ? volumeInfo.ratingsCount : ratingsCount
@@ -105,7 +105,7 @@ const CoverCard = ( props: BookProps  ) => {
        !isEmpty( props.data )
         ?  <Stack direction={["column", "column", "row"]} rounded="base" boxShadow="sm">
              <VStack>
-               <CoverImage imageLink={ imageLink } title={ title }/>
+               <CoverImage imagelink={ imagelink } title={ title }/>
                <CoverRating rating={ averageRating } count={ ratingsCount } />
              </VStack>
              <CoverText 
