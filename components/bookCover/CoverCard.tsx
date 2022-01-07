@@ -104,7 +104,7 @@ const CoverCard = ( props: BookProps  ) => {
       {
        !isEmpty( props.data )
         ?  <Stack direction={["column", "column", "row"]} rounded="base" boxShadow="sm">
-             <VStack>
+             <VStack justify="center">
                <CoverImage imagelink={ imagelink } title={ title }/>
                <CoverRating rating={ averageRating } count={ ratingsCount } />
              </VStack>

@@ -1,4 +1,4 @@
-import { Box, Flex, Image } from '@chakra-ui/react';
+import { Box, Flex, Img } from '@chakra-ui/react';
 import Blob from './Blob';
 
 export type ImageProps = {
@@ -14,12 +14,11 @@ function CoverImage( props: ImageProps ) {
       align={ 'center' }
       position={ 'relative' }
       w={ 'full' }
-      boxShadow={[ "md", 'lg' ]}
       { ...props }
     >
       <Blob
         position={ 'absolute' }
-        h={ "sm" }
+        h={ "xs" }
         zIndex={ 0 }
         color={ 'gray.700' }
       />
@@ -29,16 +28,13 @@ function CoverImage( props: ImageProps ) {
         borderWidth={5}
         borderColor={"transparent"}
         borderRadius={7}
-        boxShadow={"md"}
+        boxShadow={[ "md", 'lg' ]}
       >
-        <Image 
+        <Img 
           objectFit='cover' 
-          borderRadius={ "sm" }
-          w={["md", "xl"]}
           alt={ `image for book title ${ title }` } 
           aria-label={ "book thumbnail image" }
           src={ imagelink !== undefined ? imagelink : './static/empty-cover.jpeg' }
-          thumbnail={ 'true' }
         />
       </Box>
     </Flex>
