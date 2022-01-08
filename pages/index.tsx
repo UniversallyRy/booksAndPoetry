@@ -5,7 +5,7 @@ import axios from 'axios';
 import SearchBar from '../components/searchBar';
 import CoverCard, { BookProps } from '../components/bookCover/CoverCard';
 import { searchHandler, bookHandler } from '../utils/coverHandlers';
-
+// todos: TESTS, carousel
 const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [bookObj, setBook] = useState({
     searchedInput: '',
