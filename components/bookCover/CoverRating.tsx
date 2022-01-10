@@ -1,5 +1,5 @@
-import { Box, Center, Flex, IconButton, Text } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons'; 
+import { Box, Center, Flex, IconButton, Text } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons"; 
 
 export type RatingProps = {
   rating: number; 
@@ -11,7 +11,7 @@ const RatingStars = () => {
   for (let i = 0; i < 5; i++) { 
     starItems.push(
       <IconButton 
-        size={ 'sm' }
+        size={ "sm" }
         borderRadius={"base"}
         mx={0.5} 
         aria-label={ `Rating Star_${i}` } 
@@ -37,13 +37,13 @@ const BookRating = ( props: RatingProps ) => {
       display="block"
       width={ "full" }
       align={"center"}
-      padding= {'40px 20px'}
+      padding= {"40px 20px"}
     >
       <Text 
-        fontSize='lg'
-        display= 'block'
-        m= '10px 0 0 0'
-        color='orange.300'
+        fontSize="lg"
+        display= "block"
+        m= "10px 0 0 0"
+        color="orange.300"
       >
         { rating }
         <Text fontSize="sm">
@@ -54,7 +54,7 @@ const BookRating = ( props: RatingProps ) => {
         display= "inline-block"
         width= "130px"
         mr={45} 
-        position='relative'
+        position="relative"
         boxShadow="xl"
       >
         <Flex 
@@ -75,7 +75,7 @@ const BookRating = ( props: RatingProps ) => {
         >
           <Flex 
             height= "18px"
-            color={ count > 0 ? 'yellow.600': 'white' }
+            color={ count > 0 ? "yellow.600": "white" }
             _last={{ marginRight: 0 }}
           >
             <RatingStars />

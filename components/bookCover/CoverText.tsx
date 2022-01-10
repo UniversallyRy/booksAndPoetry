@@ -1,7 +1,7 @@
-import { Button, Heading, Text, VStack, useColorModeValue } from '@chakra-ui/react';
-import CoverMeta from './CoverMeta';
-import { truncate, languages } from '../../utils';
-import moment from 'moment';
+import { Button, Heading, Text, VStack, useColorModeValue } from "@chakra-ui/react";
+import CoverMeta from "./CoverMeta";
+import { truncate, languages } from "../../utils";
+import moment from "moment";
 
 export type TextProps = {
     title: string | undefined; 
@@ -25,15 +25,15 @@ const CoverText = ( props: TextProps ) => {
             boxShadow={ "inner" }
             aria-label={ "div containing info on book" }
         >
-            <Heading align={"center"} color={ useColorModeValue('orange.400', "orange.300") } fontSize={ "lg" } fontWeight={ 600 }>
+            <Heading align={"center"} color={ useColorModeValue("orange.400", "orange.300") } fontSize={ "lg" } fontWeight={ 600 }>
                 { title }
             </Heading>
             { publishedDate !== undefined && <span>*Released – { momentDate } </span> }
-            { authors !== undefined && authors.length > 0 && <CoverMeta name={ "Author" } value={ authors.join(', ') } /> }
+            { authors !== undefined && authors.length > 0 && <CoverMeta name={ "Author" } value={ authors.join(", ") } /> }
             { pageCount !== undefined && <CoverMeta name={ "Page Amount" } value={ pageCount } /> }
             { categories !== undefined && <CoverMeta name={ "Category" } value={ categories } /> }
             { language !== undefined && <CoverMeta name={ "Language" } value={ languages.filter((item: { code: string }) => { return item.code === language })[0].name } /> }
-            { description !== undefined && <Text boxShadow={"inner"} p={1} borderRadius={"lg"} color={ "orange.400" } fontSize={ ["10px", "14px"] } fontWeight={ 400 }>{ truncate(description, 500).replace(/<[^>]+>/g, '') }</Text> }
+            { description !== undefined && <Text boxShadow={"inner"} p={1} borderRadius={"lg"} color={ "orange.400" } fontSize={ ["10px", "14px"] } fontWeight={ 400 }>{ truncate(description, 500).replace(/<[^>]+>/g, "") }</Text> }
             { webReaderLink !== undefined &&
                 <Button align={"center"} borderRadius={ 2 } boxShadow={ "md" } color={ "orange.300" }>
                     <a target="_blink" href={ webReaderLink }> 

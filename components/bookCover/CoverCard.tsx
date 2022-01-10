@@ -1,9 +1,9 @@
-import { Stack, Center, VStack } from '@chakra-ui/react';
-import CoverImage from './CoverImage';
-import CoverRating  from './CoverRating';
-import CoverText from './CoverText';
-import Loading from './Loading';
-import { isEmpty } from '../../utils';
+import { Stack, Center, VStack } from "@chakra-ui/react";
+import CoverImage from "./CoverImage";
+import CoverRating  from "./CoverRating";
+import CoverText from "./CoverText";
+import Loading from "./Loading";
+import { isEmpty } from "../../utils";
 
 export type BookProps = {
   data: {
@@ -95,9 +95,9 @@ const CoverCard = ( props: BookProps  ) => {
   return (
     <Center 
       w={ ["sm", "sm", "xl", "2xl"] }
-      padding= {['2px', '5px', '10px']}
+      padding= {["2px", "5px", "10px"]}
       boxShadow={ "xl" }
-      rounded={ 'sm' }
+      rounded={ "sm" }
       backgroundColor={ "transparent" }  
       { ...props }
     >

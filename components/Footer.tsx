@@ -1,4 +1,4 @@
-import { Box, HStack, Image, StackProps, Text } from '@chakra-ui/react'
+import { Box, HStack, Image, StackProps, Text } from "@chakra-ui/react"
 
 const Footer = (props: StackProps) => {
   return (
@@ -11,7 +11,7 @@ const Footer = (props: StackProps) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <Box as="span">
             <Image src="/vercel.svg" alt="Vercel Logo" width={ 12 } height={ 12 } />
           </Box>

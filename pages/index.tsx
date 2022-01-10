@@ -1,14 +1,14 @@
-import type { NextPage, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType} from 'next';
-import { useState } from 'react';
-import { Container } from '@chakra-ui/react';
-import axios from 'axios';
-import SearchBar from '../components/searchBar';
-import CoverCard, { BookProps } from '../components/bookCover/CoverCard';
-import { searchHandler, bookHandler } from '../utils/coverHandlers';
+import type { NextPage, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType} from "next";
+import { useState } from "react";
+import { Container } from "@chakra-ui/react";
+import axios from "axios";
+import SearchBar from "../components/searchBar";
+import CoverCard, { BookProps } from "../components/bookCover/CoverCard";
+import { searchHandler, bookHandler } from "../utils/coverHandlers";
 // todos: TESTS, carousel
 const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [bookObj, setBook] = useState({
-    searchedInput: '',
+    searchedInput: "",
     items: [],
     item: book,
   });
@@ -39,7 +39,7 @@ const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>
 };
 
 export const getStaticProps: GetStaticProps = async ( context: GetStaticPropsContext ) => {
-  const res = await axios.get(`https://www.googleapis.com/books/v1/volumes/iCWgDwAAQBAJ`);
+  const res = await axios.get("https://www.googleapis.com/books/v1/volumes/iCWgDwAAQBAJ");
   const book: BookProps = await res.data;
   return {
     props: {

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Axios } from "axios";
-import { BookProps } from '../components/bookCover/CoverCard';
+import { BookProps } from "../components/bookCover/CoverCard";
 
 export type BookObjProps = {
     searchedInput: string;
@@ -50,7 +50,7 @@ export const bookHandler = ({ id, bookObj, setBook }: onClickProps ) => {
     const targetItem = items.filter(( item:{ id: string }) => { return item.id === id })[0];
     
     setBook({
-      searchedInput: '',
+      searchedInput: "",
       items: [],
       item: targetItem
     });

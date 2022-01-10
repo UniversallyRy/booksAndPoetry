@@ -1,6 +1,6 @@
-import { IconButton, useColorMode } from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import NavBarContainer from './Container';
+import { IconButton, useColorMode } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import NavBarContainer from "./Container";
 
 type NavBarProps = React.PropsWithChildren<{}>;
 
@@ -14,7 +14,7 @@ const Navbar = ( props: NavBarProps ) => {
         onClick={ toggleColorMode } 
         _focus={{ boxShadow: "none" }}
       >
-        { colorMode === 'light' ? <MoonIcon /> : <SunIcon /> }
+        { colorMode === "light" ? <MoonIcon /> : <SunIcon /> }
       </IconButton>
     </NavBarContainer>
   );
