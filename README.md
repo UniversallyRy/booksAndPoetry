@@ -92,11 +92,18 @@ yarn
 
 <!-- USAGE EXAMPLES -->
 
-## Usage
+## Screenshot
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+<table>
+  <tr>
+    <td>Light Mode</td>
+    <td>Dark Mode</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="public/light.png"></td>
+    <td valign="top"><img src="public/dark.png"></td>
+  </tr>
+ </table>
 
 <!-- ROADMAP -->
 
