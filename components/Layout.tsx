@@ -3,7 +3,9 @@ import Navbar from "./navbar";
 import Footer from "./Footer";
 import Head from "next/head";
 
-const Layout = ({ children, props } :any) => {
+type PropType = React.PropsWithChildren<{}>;
+
+const Layout = ({ children, ...props }: PropType ) => {
   return (
     <Flex 
         direction="column"
