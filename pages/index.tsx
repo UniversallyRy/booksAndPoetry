@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps, GetStaticPropsContext, InferGetStaticPro
 import { useState } from "react";
 import { Container } from "@chakra-ui/react";
 import axios from "axios";
-import SearchBar from "../components/searchBar";
+import SearchBar from "../components/SearchBar";
 import CoverCard, { BookProps } from "../components/bookCover/CoverCard";
 import { searchHandler, bookHandler } from "../utils/coverHandlers";
 // todos: TESTS, carousel
