@@ -6,7 +6,7 @@ import SearchBar from "../../components/SearchBar";
 import { poemHandler, pSearchHandler } from "../../utils/coverHandlers";
 import PoemCard, { PoemProps } from "../../components/poem";
 import Head from "next/head";
-// todos: TESTS, carousel
+
 const Poetry: NextPage = ({ quote }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [poemObj, setPoem] = useState({
     searchedInput: "",
@@ -17,7 +17,7 @@ const Poetry: NextPage = ({ quote }: InferGetStaticPropsType<typeof getStaticPro
   const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
     pSearchHandler({ e, axios, poemObj, setPoem })
   };
-  // change dropdown book onClick
+
   const getPoemHandler = ( id: string ) => {
     poemHandler({ id, axios, poemObj, setPoem })
   };

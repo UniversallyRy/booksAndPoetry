@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { ChangeEventHandler } from "react";
 import { Box, List, ListItem, IconButton, HStack } from "@chakra-ui/react";  
 import { SearchIcon } from "@chakra-ui/icons";
@@ -17,6 +18,8 @@ export type SearchProps = {
 
 const SearchBar = ( props: SearchProps ) => {
   const { value, changeHandler, data, clickHandler } = props;
+  const router = useRouter();
+  const holderText = router.pathname === "/" ? "Book" : "Author";
   
   return (
     <Box 
@@ -39,7 +42,7 @@ const SearchBar = ( props: SearchProps ) => {
           style={{ outline:"none", color: "orange",padding: "6px", width: "90%",height:"40px", backgroundColor: "transparent" }}
           value={ value }
           aria-label={ "input for title searching" }
-          placeholder={ "Look Up A Favorite" }
+          placeholder={ `Look Up A Favorite ${holderText}` }
           onChange={ changeHandler } 
         />
         <IconButton
