@@ -1,6 +1,7 @@
-import { IconButton, useColorMode } from "@chakra-ui/react";
+import { Button, IconButton, useColorMode } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NavBarContainer from "./Container";
+import Link from "next/link";
 
 type NavBarProps = React.PropsWithChildren<{}>;
 
@@ -9,6 +10,9 @@ const Navbar = ( props: NavBarProps ) => {
 
   return (
     <NavBarContainer { ...props }>
+      <Link href="/poetry" passHref>
+      <Button> Poetry </Button>
+      </Link>
       <IconButton 
         aria-label={ "Color Toggle Button" }
         onClick={ toggleColorMode } 
