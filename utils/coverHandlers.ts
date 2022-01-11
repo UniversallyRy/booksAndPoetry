@@ -90,7 +90,7 @@ export const poemHandler = async ({ id, axios, poemObj, setPoem }: any ) => {
     const { items, searchedInput } = poemObj;
     const targetItem = items.filter(( item:{ id: string }) => { return item.id === id })[0];
     const res = await axios.get(`https://poetrydb.org/title,author/${targetItem.title};${searchedInput}`);
-    const quote = await res.data;
+    const quote = await res.data[0];
     setPoem({
       searchedInput: "",
       items: [],
