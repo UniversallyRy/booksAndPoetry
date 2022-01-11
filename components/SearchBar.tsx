@@ -6,6 +6,7 @@ import { DebounceInput } from "react-debounce-input";
 export type ListProps = {
   id: string;
   volumeInfo: { title:string };
+  title:string;
 }
 
 export type SearchProps = {
@@ -70,10 +71,10 @@ const SearchBar = ( props: SearchProps ) => {
               zIndex= { 99 }
             >
               {
-              data.map(( book: ListProps ) => (
+              data.map(( item: ListProps ) => (
                 <ListItem 
-                  key={ book.id }
-                  onClick={ () => clickHandler( book.id )}
+                  key={ item.id }
+                  onClick={ () => clickHandler( item.id )}
                   cursor={ "pointer" }
                   fontSize={ "14px" }
                   width={ "full" }
@@ -85,7 +86,7 @@ const SearchBar = ( props: SearchProps ) => {
                   _hover={{ backgroundColor: "gray" }}
                   aria-label={ "list item generated from input" }
                 >
-                  { book.volumeInfo.title }
+                  {item.volumeInfo ? item.volumeInfo.title : item.title }
                 </ListItem>
               ))}
             </List>
