@@ -8,7 +8,6 @@ export type ListProps = {
   volumeInfo: { title:string };
   title:string;
 }
-
 export type SearchProps = {
   data: ListProps[];
   value: string;
@@ -22,10 +21,11 @@ const SearchBar = ( props: SearchProps ) => {
   return (
     <Box 
       position={ "relative" }
+      w={ "full" }
       mt={ 8 }
       mb={ 8 }
       boxShadow={ ["base", "md"] }
-      w={ ["sm", "sm", "xl", "2xl"] }
+      {...props}
     >
       <HStack
         width={ "full" }

@@ -18,7 +18,7 @@ function CoverImage( props: ImageProps ) {
     >
       <Blob
         position={ "absolute" }
-        h={ "xs" }
+        h={ "60%" }
         zIndex={ 0 }
         color={ "gray.700" }
       />

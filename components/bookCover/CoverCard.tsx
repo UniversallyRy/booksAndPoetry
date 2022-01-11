@@ -94,7 +94,6 @@ const CoverCard = ( props: BookProps  ) => {
   
   return (
     <Center 
-      w={ ["sm", "sm", "xl", "2xl"] }
       padding= {["2px", "5px", "10px"]}
       boxShadow={ "xl" }
       rounded={ "sm" }
