@@ -14,7 +14,7 @@ const NavButton = ({pathName, buttonName, ...props}:LinkProps) => {
     return (
         <Link href={pathName} passHref>
             <Button
-                rounded={'sm'}
+                rounded={"sm"}
                 aria-label={`Go To ${buttonName} Page`}
                 // if page pathname doesn't equal button pathName, set bg to nav color, else default button bg
                 bg={router.pathname !== pathName ? "red.900" : undefined}
