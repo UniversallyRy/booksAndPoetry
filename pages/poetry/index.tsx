@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Container, Heading } from "@chakra-ui/react";
 import SearchBar from "../../components/SearchBar";
 import PoemCard, { PoemProps } from "../../components/poem";
-import { poemHandler, getSearchedPoems } from "../../utils/coverHandlers";
+import { poemHandler, getSearchedPoems } from "../../utils/searchHandlers";
 import axios from "axios";
 
 const Poetry: NextPage = ({ fetchedPoem }: InferGetStaticPropsType<typeof getStaticProps>) => {

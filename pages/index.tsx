@@ -5,7 +5,7 @@ import { Container } from "@chakra-ui/react";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import CoverCard, { BookProps } from "../components/bookCover/CoverCard";
-import { getSearchedBooks, bookHandler } from "../utils/coverHandlers";
+import { getSearchedBooks, bookHandler } from "../utils/searchHandlers";
 // todos: TESTS, carousel
 const Book: NextPage = ({ fetchedBook }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [bookObj, setBook] = useState({
