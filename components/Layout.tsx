@@ -1,7 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import Navbar from "./navbar";
 import Footer from "./Footer";
-import Head from "next/head";
 
 type PropType = React.PropsWithChildren<{}>;
 

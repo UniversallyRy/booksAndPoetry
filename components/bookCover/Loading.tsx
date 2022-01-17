@@ -1,9 +1,10 @@
+import { Box } from "@chakra-ui/react";
 
 const Loading = () => {
     return (
-      <div className="Loading">
-        <div className="Ellipsis"><div></div><div></div><div></div><div></div></div>
-      </div>
+      <Box className="Loading">
+        <Box className="Ellipsis"><Box></Box><Box></Box><Box></Box><Box></Box></Box>
+      </Box>
     );
   };
   

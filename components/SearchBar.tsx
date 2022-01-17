@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { ChangeEventHandler } from "react";
-import { Box, List, ListItem, IconButton, HStack } from "@chakra-ui/react";  
+import { Box, HStack, List, ListItem, IconButton } from "@chakra-ui/react";  
 import { SearchIcon } from "@chakra-ui/icons";
 import { DebounceInput } from "react-debounce-input";
 
