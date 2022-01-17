@@ -3,6 +3,7 @@ import { Flex } from "@chakra-ui/react";
 type ContainerProps = React.PropsWithChildren<{}>;
 
 const NavBarContainer = ({ children, ...props }: ContainerProps ) => {
+  // Flexbox container for all NavBar content
   return (
     <Flex
       as={ "nav" }

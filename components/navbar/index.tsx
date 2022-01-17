@@ -6,6 +6,7 @@ import NavButton from './Button';
 type NavBarProps = React.PropsWithChildren<{}>;
 
 const Navbar = ( props: NavBarProps ) => {
+  // chakra-ui  hook for toggling
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -24,6 +25,7 @@ const Navbar = ( props: NavBarProps ) => {
         aria-label={ "Clicking toggles day or night mode" }
         onClick={ toggleColorMode } 
         rounded={'sm'}
+        // todo: edit outline styling to match navbuttons
         _focus={{ boxShadow: "none" }}
       >
         { colorMode === "light" ? <MoonIcon /> : <SunIcon /> }
