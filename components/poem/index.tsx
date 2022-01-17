@@ -1,27 +1,27 @@
-import { Box, Heading, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Heading, Text, VStack } from '@chakra-ui/react';
+import React from 'react';
 
  export type PoemProps = {
-    item:{
+    poem:{
         author: string;
         lines: string[];
         title: string;
         linecount: string;
     }
 }
-function PoemCard({ item }: PoemProps) {
+function PoemCard({ poem }: PoemProps) {
   return (
     <Box p={1} w="full" bg={"red.900"} rounded={"sm"} boxShadow={"lg"}>
-        <Heading fontSize={"xl"} m={1}>{item.title}</Heading>
+        <Heading fontSize={"xl"} m={1}>{poem.title}</Heading>
         <Heading fontSize={"lg"} m={1}>{ "By" }</Heading>
-        <Heading fontSize={"xl"} m={1}>{item.author}</Heading>
+        <Heading fontSize={"xl"} m={1}>{poem.author}</Heading>
         <VStack m={4}>
-            {item.lines.map((line:string, i:number) => {
+            {poem.lines.map((line:string, i:number) => {
                 return <Text key={i}>{line}</Text>
             })}
         </VStack>
     </Box>
-  )
-}
+  );
+};
 
 export default PoemCard;
