@@ -7,11 +7,11 @@ import SearchBar from "../components/SearchBar";
 import CoverCard, { BookProps } from "../components/bookCover/CoverCard";
 import { getSearchedBooks, bookHandler } from "../utils/coverHandlers";
 // todos: TESTS, carousel
-const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Book: NextPage = ({ fetchedBook }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [bookObj, setBook] = useState({
-    searchedInput: "",
-    items: [],
-    item: book,
+    book: fetchedBook,
+    searchInput: "",
+    searchBookList: [],
   });
   // Search bookObj by searchedInput
   const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
@@ -22,7 +22,7 @@ const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>
     bookHandler({ id, bookObj, setBook })
   };
 
-  const { searchedInput, items, item } = bookObj;
+  const { book, searchInput, searchBookList } = bookObj;
   return (
     <Container align="center" w={600}>
       <Head>
@@ -31,13 +31,13 @@ const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SearchBar
-        value={ searchedInput }
-        data={ items }
+        value={ searchInput }
+        data={ searchBookList }
         changeHandler={ getSearchHandler }
         clickHandler={ getBookHandler }
       />
       <CoverCard 
-        data={ item } 
+        data={ book } 
         aria-label={ "div containing book information" } 
       />
     </Container>
@@ -46,10 +46,10 @@ const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticProps: GetStaticProps = async ( context: GetStaticPropsContext ) => {
   const res = await axios.get("https://www.googleapis.com/books/v1/volumes/iCWgDwAAQBAJ");
-  const book: BookProps = await res.data;
+  const fetchedBook: BookProps = await res.data;
   return {
     props: {
-      book: book, 
+      fetchedBook, 
       revalidate: 60 * 60 * 6,
     },
   };
