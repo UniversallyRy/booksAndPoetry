@@ -5,7 +5,7 @@ import { Container } from "@chakra-ui/react";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import CoverCard, { BookProps } from "../components/bookCover/CoverCard";
-import { searchHandler, bookHandler } from "../utils/coverHandlers";
+import { getSearchedBooks, bookHandler } from "../utils/coverHandlers";
 // todos: TESTS, carousel
 const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [bookObj, setBook] = useState({
@@ -15,7 +15,7 @@ const Book: NextPage = ({ book }: InferGetStaticPropsType<typeof getStaticProps>
   });
   // Search bookObj by searchedInput
   const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
-    searchHandler({ e, axios, bookObj, setBook })
+    getSearchedBooks({ e, axios, bookObj, setBook })
   };
   // change dropdown book onClick
   const getBookHandler = ( id: string ) => {

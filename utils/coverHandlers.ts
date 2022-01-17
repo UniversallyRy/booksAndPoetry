@@ -21,7 +21,7 @@ export type onClickProps = {
     setBook: Dispatch<SetStateAction<{ searchedInput: string; items: never[]; item: BookProps }>>;
 }
 
-export const searchHandler = ({ e, axios, bookObj, setBook }: SearchProps ) => {
+export const getSearchedBooks = ({ e, axios, bookObj, setBook }: SearchProps ) => {
     const searchedInput = e.target.value;
   
     if (searchedInput) {
@@ -45,7 +45,7 @@ export const searchHandler = ({ e, axios, bookObj, setBook }: SearchProps ) => {
     }
 }
 
-export const pSearchHandler = ({ e, axios, poemObj, setPoem }: any ) => {
+export const getSearchedPoems = ({ e, axios, poemObj, setPoem }: any ) => {
   const searchedInput = e.target.value;
   
   if (searchedInput) {
@@ -73,7 +73,7 @@ export const pSearchHandler = ({ e, axios, poemObj, setPoem }: any ) => {
       items: [], 
     });
   }
-}
+};
   
 export const bookHandler = ({ id, bookObj, setBook }: onClickProps ) => {
     const { items } = bookObj;
