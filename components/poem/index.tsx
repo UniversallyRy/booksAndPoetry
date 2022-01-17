@@ -11,7 +11,7 @@ import React from 'react'
 }
 function PoemCard({ item }: PoemProps) {
   return (
-    <Box p={1} w="full" bg={"red.900"} boxShadow={"lg"} borderRadius={"md"}>
+    <Box p={1} w="full" bg={"red.900"} rounded={"sm"} boxShadow={"lg"}>
         <Heading fontSize={"xl"} m={1}>{item.title}</Heading>
         <Heading fontSize={"lg"} m={1}>{ "By" }</Heading>
         <Heading fontSize={"xl"} m={1}>{item.author}</Heading>

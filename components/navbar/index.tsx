@@ -15,6 +15,7 @@ const Navbar = ( props: NavBarProps ) => {
       <ButtonGroup mx={5}>
         <Link href="/" passHref>
           <Button 
+            rounded={'sm'}
             aria-label='Go To Book Page'
             bg={router.pathname === '/poetry' ? "red.900" : undefined}
             _focus={{outline: "hidden"}}
@@ -23,6 +24,7 @@ const Navbar = ( props: NavBarProps ) => {
         </Link>
         <Link href="/poetry" passHref>
           <Button 
+            rounded={'sm'}
             aria-label='Go To Poetry Page'
             bg={router.pathname === '/poetry' ? undefined: "red.900" }
             _focus={{outline: "hidden"}}
@@ -31,8 +33,9 @@ const Navbar = ( props: NavBarProps ) => {
         </Link>
       </ButtonGroup>
       <IconButton 
-        aria-label={ "Color Toggle Button" }
+        aria-label={ "Clicking toggles day or night mode" }
         onClick={ toggleColorMode } 
+        rounded={'sm'}
         _focus={{ boxShadow: "none" }}
       >
         { colorMode === "light" ? <MoonIcon /> : <SunIcon /> }
