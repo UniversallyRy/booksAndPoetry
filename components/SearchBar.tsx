@@ -19,6 +19,7 @@ export type SearchProps = {
 const SearchBar = ( props: SearchProps ) => {
   const { value, changeHandler, data, clickHandler } = props;
   const router = useRouter();
+  //placeholder value name in input
   const holderText = router.pathname === "/" ? "Book" : "Author";
   
   return (
@@ -56,6 +57,7 @@ const SearchBar = ( props: SearchProps ) => {
           _placeholder={{ color: "gray" }}
         />
       </HStack>
+        {/* Dropdown list created when inputting found title values */}
         {
           data.length > 0 &&
             <List 

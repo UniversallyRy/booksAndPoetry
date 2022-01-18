@@ -5,6 +5,7 @@ import Footer from "./Footer";
 type PropType = React.PropsWithChildren<{}>;
 
 const Layout = ({ children, ...props }: PropType ) => {
+  // Layout component to make sure every page is flexed properly
   return (
     <Flex 
         direction="column"
