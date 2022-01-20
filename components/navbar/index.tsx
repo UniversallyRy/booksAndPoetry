@@ -6,7 +6,7 @@ import NavButton from "./Button";
 type NavBarProps = React.PropsWithChildren<{}>;
 
 const Navbar = ( props: NavBarProps ) => {
-  // chakra-ui  hook for toggling
+  // chakra-ui colormode toggle hook
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
