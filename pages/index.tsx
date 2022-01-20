@@ -13,11 +13,11 @@ const Book: NextPage = ({ fetchedBook }: InferGetStaticPropsType<typeof getStati
     searchInput: "",
     searchBookList: [],
   });
-  // Search bookObj by searchedInput
+  // Handles fetching titles from book api on search input
   const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
     getSearchedBooks({ e, axios, bookObj, setBook })
   };
-  // change dropdown book onClick
+  // Handles fetching data for chosen title
   const getBookHandler = ( id: string ) => {
     bookHandler({ id, bookObj, setBook })
   };
@@ -45,6 +45,7 @@ const Book: NextPage = ({ fetchedBook }: InferGetStaticPropsType<typeof getStati
 };
 
 export const getStaticProps: GetStaticProps = async ( context: GetStaticPropsContext ) => {
+  // Default book data retrieved It by Stephen King 
   const res = await axios.get("https://www.googleapis.com/books/v1/volumes/iCWgDwAAQBAJ");
   const fetchedBook: BookProps = await res.data;
   return {
