@@ -16,6 +16,7 @@ export type TextProps = {
 
 const CoverText = ( props: TextProps ) => {
     const { title, publishedDate, authors, pageCount, categories, language, description, webReaderLink } = props;
+    // date changed YYYY-MM-DD format to MMMM, Do, YYYY, e.g: from 2019-07-30 to July 30th, 2019
     const momentDate = moment(publishedDate).format("MMMM Do, YYYY")
     return (
         <VStack 
@@ -23,7 +24,7 @@ const CoverText = ( props: TextProps ) => {
             p={ 2 } 
             rounded={ "sm" } 
             boxShadow={ "inner" }
-            aria-label={ "div containing info on book" }
+            aria-label={ "contains book meta and other information" }
         >
             <Heading align={"center"} color={ useColorModeValue("orange.400", "orange.300") } fontSize={ "lg" } fontWeight={ 600 }>
                 { title }

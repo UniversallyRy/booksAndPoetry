@@ -34,6 +34,7 @@ function CoverImage( props: ImageProps ) {
           objectFit="cover" 
           alt={ `image for book title ${ title }` } 
           aria-label={ "book thumbnail image" }
+          // default empty thumbnail image needed
           src={ imagelink !== undefined ? imagelink : "./static/empty-cover.jpeg" }
         />
       </Box>

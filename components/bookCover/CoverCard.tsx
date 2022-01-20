@@ -3,6 +3,7 @@ import CoverImage from "./CoverImage";
 import CoverRating  from "./CoverRating";
 import CoverText from "./CoverText";
 import Loading from "./Loading";
+  // imported util method to test if an obj is empty
 import { isEmpty } from "../../utils";
 
 export type BookProps = {
@@ -73,7 +74,7 @@ export type BookProps = {
 
 const CoverCard = ( props: BookProps  ) => {
   let title, imagelink, averageRating = 0, ratingsCount = 0, publishedDate, authors, pageCount, categories, language, description, webReaderLink;
-    // if props aren't empty, deconstruct data obj 
+    
   if (!isEmpty( props.data )) {
     const { volumeInfo, accessInfo } = props.data;
 

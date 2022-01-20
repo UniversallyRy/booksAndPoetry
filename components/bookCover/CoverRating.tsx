@@ -8,6 +8,7 @@ export type RatingProps = {
 
 const RatingStars = () => {
   let starItems = [];
+  // creation of deafult 5 stars for book rating
   for (let i = 0; i < 5; i++) { 
     starItems.push(
       <IconButton 
@@ -26,7 +27,7 @@ const RatingStars = () => {
 
 const BookRating = ( props: RatingProps ) => {
   const { rating, count } = props;
-
+  // variable that sets width of star icons container in proportion to rating prop number
   let divWidth = 0;
   if (rating > 0 && rating !== undefined) {
     divWidth = rating * 27.7;
@@ -63,6 +64,7 @@ const BookRating = ( props: RatingProps ) => {
         >
           <RatingStars />  
         </Flex>
+        {/* fills in white rating star icons to match the rating number prop  */}
         <Box 
           display= "inline-block"
           height= "33px"
