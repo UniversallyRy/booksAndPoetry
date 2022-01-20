@@ -6,12 +6,13 @@ import NavButton from "./Button";
 type NavBarProps = React.PropsWithChildren<{}>;
 
 const Navbar = ( props: NavBarProps ) => {
-  // chakra-ui colormode toggle hook
+  // chakra-ui hook for toggle dark/light color mode  
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <NavBarContainer { ...props }>
       <ButtonGroup mx={5}>
+        {/* Default path */}
         <NavButton
           buttonName={"Books"}
           pathName="/"
