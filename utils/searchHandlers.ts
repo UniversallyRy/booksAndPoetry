@@ -32,7 +32,7 @@ export const getSearchedBooks = ({ e, axios, bookObj, setBook }: SearchProps ) =
           setBook({ 
             ...bookObj,
             searchInput: searchedInput,
-            book: data.items
+            searchBookList: data.items
           });
         }
       })
@@ -80,9 +80,9 @@ export const bookHandler = ({ id, bookObj, setBook }: onClickProps ) => {
   const targetItem = searchBookList.filter(( item:{ id: string }) => { return item.id === id })[0];
     
   setBook({
+    book: targetItem,
     searchInput: "",
     searchBookList: [],
-    book: targetItem
   });
 };
 
