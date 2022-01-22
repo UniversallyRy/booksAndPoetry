@@ -61,7 +61,7 @@ export const getSearchedPoems = ({ e, axios, poemObj, setPoem }: any ) => {
           })
           setPoem({ 
             ...poemObj,
-            searchedInput: searchedInput,
+            searchInput: searchedInput,
             searchPoemList: titles
           });
         }
@@ -87,14 +87,14 @@ export const bookHandler = ({ id, bookObj, setBook }: onClickProps ) => {
 };
 
 export const poemHandler = async ({ id, axios, poemObj, setPoem }: any ) => {
-  const { searchPoemList, searchedInput } = poemObj;
+  const { searchPoemList, searchInput } = poemObj;
   const targetItem = searchPoemList.filter(( item:{ id: string }) => { return item.id === id })[0];
-  const res = await axios.get(`https://poetrydb.org/title,author/${targetItem.title};${searchedInput}`);
+  const res = await axios.get(`https://poetrydb.org/title,author/${targetItem.title};${searchInput}`);
   const poem = await res.data[0];
   setPoem({
-    searchedInput: "",
+    poem: poem,
+    searchInput: "",
     searchPoemList: [],
-    poem: poem
   });
 };
   
