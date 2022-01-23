@@ -11,7 +11,7 @@ const Poetry: NextPage = ({ fetchedPoem }: InferGetStaticPropsType<typeof getSta
   const [poemObj, setPoem] = useState({
     poem: fetchedPoem,
     searchInput: "",
-    searchPoemList: [],
+    searchList: [],
   });
 
   const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
@@ -22,7 +22,7 @@ const Poetry: NextPage = ({ fetchedPoem }: InferGetStaticPropsType<typeof getSta
     poemHandler({ id, axios, poemObj, setPoem })
   };
 
-  const { poem, searchInput, searchPoemList } = poemObj;
+  const { poem, searchInput, searchList } = poemObj;
 
   return (
     <Container w={[400, 500, 600]} align="center">
@@ -34,7 +34,7 @@ const Poetry: NextPage = ({ fetchedPoem }: InferGetStaticPropsType<typeof getSta
         <Heading mt={4} fontSize={["sm", "lg", "xl"]}>{ "Search By Poem or Writer" }</Heading>
         <SearchBar
             value={searchInput}
-            data={searchPoemList}
+            data={searchList}
             changeHandler={getSearchHandler}
             clickHandler={getPoemHandler}
         />

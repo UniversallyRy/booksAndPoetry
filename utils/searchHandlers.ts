@@ -4,7 +4,7 @@ import { BookProps } from "../components/bookCover/CoverCard";
 
 export type BookObjProps = {
   searchInput: string;
-  searchBookList: never[];
+  searchList: never[];
   book: BookProps;
 }
 
@@ -32,7 +32,7 @@ export const getSearchedBooks = ({ e, axios, bookObj, setBook }: SearchProps ) =
           setBook({ 
             ...bookObj,
             searchInput: searchedInput,
-            searchBookList: data.items
+            searchList: data.items
           });
         }
       })
@@ -40,7 +40,7 @@ export const getSearchedBooks = ({ e, axios, bookObj, setBook }: SearchProps ) =
   }else {
     setBook({ 
       ...bookObj,
-      searchBookList: [], 
+      searchList: [], 
     });
   }
 }
@@ -62,7 +62,7 @@ export const getSearchedPoems = ({ e, axios, poemObj, setPoem }: any ) => {
           setPoem({ 
             ...poemObj,
             searchInput: searchedInput,
-            searchPoemList: titles
+            searchList: titles
           });
         }
       })
@@ -70,31 +70,31 @@ export const getSearchedPoems = ({ e, axios, poemObj, setPoem }: any ) => {
   } else {
     setPoem({ 
       ...poemObj,
-      searchPoemList: [], 
+      searchList: [], 
     });
   }
 };
   
 export const bookHandler = ({ id, bookObj, setBook }: onClickProps ) => {
-  const { searchBookList } = bookObj;
-  const targetItem = searchBookList.filter(( item:{ id: string }) => { return item.id === id })[0];
+  const { searchList } = bookObj;
+  const targetItem = searchList.filter(( item:{ id: string }) => { return item.id === id })[0];
     
   setBook({
     book: targetItem,
     searchInput: "",
-    searchBookList: [],
+    searchList: [],
   });
 };
 
 export const poemHandler = async ({ id, axios, poemObj, setPoem }: any ) => {
-  const { searchPoemList, searchInput } = poemObj;
-  const targetItem = searchPoemList.filter(( item:{ id: string }) => { return item.id === id })[0];
+  const { searchList, searchInput } = poemObj;
+  const targetItem = searchList.filter(( item:{ id: string }) => { return item.id === id })[0];
   const res = await axios.get(`https://poetrydb.org/title,author/${targetItem.title};${searchInput}`);
   const poem = await res.data[0];
   setPoem({
     poem: poem,
     searchInput: "",
-    searchPoemList: [],
+    searchList: [],
   });
 };
   

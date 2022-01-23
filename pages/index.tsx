@@ -8,10 +8,11 @@ import CoverCard, { BookProps } from "../components/bookCover/CoverCard";
 import { getSearchedBooks, bookHandler } from "../utils/searchHandlers";
 // todos: TESTS, carousel
 const Book: NextPage = ({ fetchedBook }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  // obj for fetchedBook info and generating lists from search input
   const [bookObj, setBook] = useState({
     book: fetchedBook,
     searchInput: "",
-    searchBookList: [],
+    searchList: [],
   });
   // Handles fetching titles from book api on search input
   const getSearchHandler = ( e: { target: { value: string | undefined } } ) => {
@@ -22,7 +23,7 @@ const Book: NextPage = ({ fetchedBook }: InferGetStaticPropsType<typeof getStati
     bookHandler({ id, bookObj, setBook })
   };
 
-  const { book, searchInput, searchBookList } = bookObj;
+  const { book, searchInput, searchList } = bookObj;
   return (
     <Container align="center" w={600}>
       <Head>
@@ -32,7 +33,7 @@ const Book: NextPage = ({ fetchedBook }: InferGetStaticPropsType<typeof getStati
       </Head>
       <SearchBar
         value={ searchInput }
-        data={ searchBookList }
+        data={ searchList }
         changeHandler={ getSearchHandler }
         clickHandler={ getBookHandler }
       />
